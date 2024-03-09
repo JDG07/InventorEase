@@ -11,6 +11,6 @@ public class SalesEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_entry);
 
-        //asadasdas
+
     }
 }

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AddStocksView extends AppCompatActivity {
 
     public static AutoCompleteTextView productstock;
-
+    public static ArrayList<String> prodstocksNames = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class AddStocksView extends AppCompatActivity {
         /////////// autocomplete textview should show dropdown with existing product names
 
         ArrayList<ProductList> prodstocks = AddItemViews.productList;
-        ArrayList<String> prodstocksNames = new ArrayList<>();
+
 
         for (ProductList product : prodstocks) {
             prodstocksNames.add(product.getPname());
