@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-// lols
 
     @Override
 
@@ -44,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
+        salesentrybutton.setOnClickListener(view->{
+            Intent c = new Intent(MainActivity.this,SalesEntry.class);
+            startActivity(c);
+            finish();
+        });
 
 
     }
