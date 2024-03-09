@@ -7,6 +7,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,7 +25,12 @@ import java.util.ArrayList;
 
 public class SalesEntry extends AppCompatActivity {
 Dialog CDSales;
-    public static EditText productsalesET,quantitysoldET;
+    public static EditText productsalesET;
+    public static EditText quantitysoldET;
+    public static EditText totalsoldET;
+    public static EditText pricesoldET;
+    public static EditText remainingstockET;
+
     public static Button addsales,backsales;
 
     public static AutoCompleteTextView autoCompleteTextView;
@@ -57,10 +65,111 @@ Dialog CDSales;
                 CDSales.setContentView(R.layout.custompopupsales);
                 productsalesET = CDSales.findViewById(R.id.productsalesET);
                 quantitysoldET = CDSales.findViewById(R.id.quantitysoldET);
+                totalsoldET = CDSales.findViewById(R.id.totalsoldET);
+                pricesoldET = CDSales.findViewById(R.id.pricesoldET);
+                remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
+
+
                 backsales= CDSales.findViewById(R.id.backsales);
                 addsales= CDSales.findViewById(R.id.addsales);
 
+               productsalesET.setEnabled(false);
+               pricesoldET.setEnabled(false);
+               remainingstockET.setEnabled(false);
+               totalsoldET.setEnabled(false);
+
+                productsalesET.setText("");
+                quantitysoldET.setText("");
+                totalsoldET.setText("");
+                pricesoldET.setText("");
+                remainingstockET.setText("");
+
+
+                String selectedProductName = (String) parent.getItemAtPosition(position);
+                int selectedPosition = searchproduct.indexOf(selectedProductName);
+
+                if (selectedPosition >= 0 && selectedPosition < products.size()) {
+                    ProductList searchedProduct = products.get(selectedPosition);
+
+                    productsalesET.setText(searchedProduct.getPname());
+
+                    int priceget = searchedProduct.getPrice();
+                    pricesoldET.setText(String.valueOf(priceget));
+
+                    int remainingstockget = searchedProduct.getQuantity();
+                    remainingstockET.setText(String.valueOf(remainingstockget));
+                } else {
+
+                   Log.e("Error", "Selected position is out of bounds");
+                }
+
+                backsales.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CDSales.dismiss(); // Dismiss the dialog
+                        autoCompleteTextView.setText("");
+                    }
+                });
+
+
+
+                quantitysoldET.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        String quantitySoldStr = quantitysoldET.getText().toString().trim();
+
+                        if (!quantitySoldStr.isEmpty()) {
+                            int quansold = Integer.parseInt(quantitySoldStr);
+                            int pricesold = Integer.parseInt(pricesoldET.getText().toString());
+
+                            int totalprice = quansold * pricesold;
+                            totalsoldET.setText(String.valueOf(totalprice));
+                        } else {
+
+                            totalsoldET.setText("");
+                        }
+
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
              // wala pang back button condition
+
+                // autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+                //
+                //
+                //        autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
+                //            ProductList searchedProduct = products.get(position);
+                //
+                //            // intent papuntang DIALOG ->
+                //            Intent intent = new Intent(SalesEntry.this, );
+                //            intent.putExtra("product", searchedProduct.getPname());
+                //            intent.putExtra("quantity", searchedProduct.getQuantity());
+                //            intent.putExtra("price", searchedProduct.getPrice());
+                //            startActivity(intent);
+                //
+                //
+                //        //addTextChangedListener for remaining stock
 
                 CDSales.show();
 
