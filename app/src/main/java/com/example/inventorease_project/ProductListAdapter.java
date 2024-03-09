@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class ProductListAdapter extends ArrayAdapter<ProductList> {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent,false);
+
+
 
         TextView prodTV = convertView.findViewById(R.id.prodTV);
         TextView quantityTV = convertView.findViewById(R.id.quantityTV);
