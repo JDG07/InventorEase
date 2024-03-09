@@ -20,7 +20,7 @@ public class AddItemViews extends AppCompatActivity {
     public static ArrayList<Integer> pricedata = new ArrayList<>();
     public static ArrayList<Integer> costdata = new ArrayList<>();
 
-
+    //vincepogi
     public static AutoCompleteTextView productnameCVT;
     public static EditText quantityET, costET, priceET,prodET;
     Button addpBTN,backitem,plistb;
