@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton salesentrybutton = findViewById(R.id.salesentrybutton);
         ImageButton statisticsbutton = findViewById(R.id.statisticsbutton);
 
+        ArrayList <String>
 
         additemsbutton.setOnClickListener(view->{
             Intent c = new Intent(MainActivity.this,AddItemViews.class);
