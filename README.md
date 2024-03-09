@@ -1,0 +1,2 @@
+# InventorEase
+Inventory Management System
