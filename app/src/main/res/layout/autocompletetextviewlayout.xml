@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/ACPItem"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        tools:src="@drawable/autocompletetextview" />
+
+    <TextView
+        android:id="@+id/ProductACTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/bebas_neue"
+        android:paddingStart="8dp"
+        android:textAppearance="?android:textAppearanceListItemSmall"
+        android:textColor="#7743DB"
+        android:textSize="20sp"
+        tools:text="Product Name" />
+
+
+</LinearLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundadditem"
+    tools:context=".AddItemViews">
+
+    <EditText
+        android:id="@+id/prodET"
+        android:layout_width="266dp"
+        android:layout_height="54dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:ems="10"
+        android:fontFamily="@font/bebas_neue"
+        android:hint="Enter Product Name"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#7743DB"
+        android:textColorHint="#6200EE"
+        android:textSize="23dp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <EditText
+        android:id="@+id/quantityET"
+        android:layout_width="267dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:hint="Quantity"
+        android:fontFamily="@font/bebas_neue"
+        android:textStyle="normal"
+        android:textSize="23dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColorHint="@color/design_default_color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
+
+    <EditText
+        android:id="@+id/costET"
+        android:layout_width="269dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:hint="Cost"
+        android:fontFamily="@font/bebas_neue"
+        android:textStyle="normal"
+        android:textSize="23dp"
+        android:inputType="number"
+        android:background="@android:color/transparent"
+        android:textAlignment="center"
+        android:textColorHint="@color/design_default_color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
+
+    <EditText
+        android:id="@+id/priceET"
+        android:layout_width="268dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="Price"
+        android:fontFamily="@font/bebas_neue"
+        android:textStyle="normal"
+        android:textSize="23dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColorHint="@color/design_default_color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
+
+    <Button
+        android:id="@+id/addpBTN"
+        android:layout_width="128dp"
+        android:layout_height="49dp"
+        android:background="@drawable/ripple_effect"
+        android:backgroundTint="#7743DB"
+        android:text="Add Product"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617" />
+
+    <Button
+        android:id="@+id/backitem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:backgroundTint="#7743DB"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+    <Button
+        android:id="@+id/plistb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product List"
+        android:background="@drawable/ripple_effect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

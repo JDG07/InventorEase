@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundproductinfo"
+    tools:context=".ProductInfoViews">
+
+    <Button
+        android:id="@+id/saveBTN"
+        android:layout_width="111dp"
+        android:layout_height="63dp"
+        android:clickable="false"
+        android:drawable="@drawable/ripple_effect"
+        android:enabled="true"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.815" />
+
+    <Button
+        android:id="@+id/deleteBTN"
+        android:layout_width="118dp"
+        android:layout_height="64dp"
+        android:clickable="false"
+        android:drawable="@drawable/ripple_effect"
+        android:enabled="true"
+        android:text="DELETE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="297dp"
+        android:layout_height="419dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355">
+
+        <EditText
+            android:id="@+id/prodinfoET"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="2dp"
+            android:editable="false"
+            android:ems="11"
+            android:enabled="false"
+            android:hint="Name"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/quaninfoET"
+            app:layout_constraintEnd_toStartOf="@+id/saveBTN"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/quaninfoET"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="2dp"
+            android:editable="false"
+            android:ems="11"
+            android:enabled="false"
+            android:hint="Quantity"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/costinfoET"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/prodinfoET" />
+
+        <EditText
+            android:id="@+id/costinfoET"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="2dp"
+            android:editable="true"
+            android:ems="11"
+            android:enabled="false"
+            android:hint="Cost"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/priceinfoET"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.009"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quaninfoET" />
+
+
+        <EditText
+            android:id="@+id/priceinfoET"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="2dp"
+            android:editable="false"
+            android:ems="11"
+            android:enabled="false"
+            android:hint="Price"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/costinfoET" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/editBTN"
+        android:layout_width="118dp"
+        android:layout_height="64dp"
+        android:clickable="false"
+        android:drawable="@drawable/ripple_effect"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
