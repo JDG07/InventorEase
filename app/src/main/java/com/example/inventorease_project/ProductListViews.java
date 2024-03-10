@@ -23,7 +23,7 @@ Button EditYes, EditNo;
 
 
     public static ProductListAdapter adapter;
-    public static ListView mListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,6 @@ Button EditYes, EditNo;
 
         adapter = new ProductListAdapter(this,R.layout.productslistviewlayout,productNames);
         mListView.setAdapter(adapter);
-
-
-
-
 
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

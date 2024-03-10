@@ -1,5 +1,7 @@
 package com.example.inventorease_project;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,6 +16,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -36,6 +39,12 @@ Dialog CDSales;
 
     public static Button addsales,backsales;
 
+    public static TextView prodnameTV, quanTV, priceTV, totalTV;
+
+    public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
+    public static ProductListAdapter salesadapter;
+
+
     public static AutoCompleteTextView autoCompleteTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,10 @@ Dialog CDSales;
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sales_entry);
         CDSales = new Dialog(this);
+
+
+
+
 
         Button backdash1 = findViewById(R.id.backdash1);
 
@@ -52,12 +65,7 @@ Dialog CDSales;
             Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
         });
 
-    //// list view
-        ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
 
-        // modify
-        //adapter = new ProductListAdapter(this,R.layout.saleslistviewlayout,productNames);
-        //SalesLV.setAdapter(adapter);
 
 
 
@@ -80,13 +88,14 @@ Dialog CDSales;
             autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
 
                 LinearLayout custompopupL = findViewById(R.id.custompopupL);
-
                 CDSales.setContentView(R.layout.custompopupsales);
+
                 productsalesET = CDSales.findViewById(R.id.productsalesET);
                 quantitysoldET = CDSales.findViewById(R.id.quantitysoldET);
                 totalsoldET = CDSales.findViewById(R.id.totalsoldET);
                 pricesoldET = CDSales.findViewById(R.id.pricesoldET);
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
+
 
 
                 backsales= CDSales.findViewById(R.id.backsales);
@@ -125,8 +134,29 @@ Dialog CDSales;
                 backsales.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CDSales.dismiss(); // Dismiss the dialog
+                        CDSales.dismiss();
                         autoCompleteTextView.setText("");
+                        productsalesET.setText("");
+                        quantitysoldET.setText("");
+                        pricesoldET.setText("");
+                        totalsoldET.setText("");
+                    }
+                });
+
+                ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
+                ArrayList<SalesArrayClass> zzz = salesarray;
+                SalesListAdapter salesadapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, zzz);
+                SalesLV.setAdapter(salesadapter);
+
+
+
+
+
+                addsales.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       addSales();
+
                     }
                 });
 
@@ -157,38 +187,8 @@ Dialog CDSales;
 
                             totalsoldET.setText("");
                         }
-
-
                     }
                 });
-
-
-
-
-
-
-
-
-
-
-
-             // wala pang back button condition
-
-                // autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
-                //
-                //
-                //        autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
-                //            ProductList searchedProduct = products.get(position);
-                //
-                //            // intent papuntang DIALOG ->
-                //            Intent intent = new Intent(SalesEntry.this, );
-                //            intent.putExtra("product", searchedProduct.getPname());
-                //            intent.putExtra("quantity", searchedProduct.getQuantity());
-                //            intent.putExtra("price", searchedProduct.getPrice());
-                //            startActivity(intent);
-                //
-                //
-                //        //addTextChangedListener for remaining stock
 
                 CDSales.show();
 
@@ -196,11 +196,25 @@ Dialog CDSales;
 
 
 
+    }
+    public void addSales(){
+        String prodsales = String.valueOf(productsalesET.getText());
+        String quansales = String.valueOf(quantitysoldET.getText());
+        String pricesales = String.valueOf(pricesoldET.getText());
+        String totsales = String.valueOf(totalsoldET.getText());
 
+        SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
+        salesarray.add(salesEntry);
 
+        productsalesET.getText().clear();
+        quantitysoldET.getText().clear();
+        pricesoldET.getText().clear();
+        totalsoldET.getText().clear();
 
+        CDSales.dismiss();
+        autoCompleteTextView.setText("");
 
-
+        Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
     }
 }

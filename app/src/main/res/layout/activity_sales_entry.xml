@@ -30,6 +30,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
+            android:id="@+id/prodnameTV"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
@@ -39,6 +40,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/quanTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,6 +50,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/priceTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,6 +60,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/totalTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,10 +75,10 @@
         android:id="@+id/SalesLV"
         android:layout_width="414dp"
         android:layout_height="417dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="116dp"
         app:layout_constraintBottom_toTopOf="@+id/SaveSalesEntry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -116,13 +120,12 @@
         android:id="@+id/autoCompleteTextView"
         android:layout_width="256dp"
         android:layout_height="59dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:hint="Search Product"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bgsalesentry"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintTop_toTopOf="@+id/bgsalesentry" />
 
     <Button
         android:id="@+id/backdash1"
