@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrounddashboardmodified"
+    android:background="@drawable/_backgrounddashboardmodified"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -73,10 +73,10 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifimage1"
-        android:layout_width="407dp"
-        android:layout_height="162dp"
+        android:layout_width="406dp"
+        android:layout_height="164dp"
         android:layout_marginTop="-230dp"
-        android:src="@drawable/inventor_ease_dashboard"
+        android:src="@drawable/inventor_ease_dashboard1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"

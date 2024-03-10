@@ -79,7 +79,7 @@ Dialog CDSales;
 
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, searchproduct);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.salesentryactvlayout,R.id.salesACTV ,searchproduct);
         autoCompleteTextView.setThreshold(1);
         autoCompleteTextView.setAdapter(adapter);
 

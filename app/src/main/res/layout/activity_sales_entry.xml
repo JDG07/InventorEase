@@ -4,29 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splashscreen"
+    android:orientation="horizontal"
     tools:context=".SalesEntry">
 
-
-    <TextView
-        android:id="@+id/bgsalesentry"
-        android:layout_width="415dp"
-        android:layout_height="740dp"
-        android:background="@drawable/splashscreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1ec2d4"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/SalesLV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -71,16 +64,6 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/SalesLV"
-        android:layout_width="414dp"
-        android:layout_height="417dp"
-        android:layout_marginBottom="116dp"
-        app:layout_constraintBottom_toTopOf="@+id/SaveSalesEntry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/CurrencyP"
         android:layout_width="162dp"
@@ -92,6 +75,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/SalesLV"
+        android:layout_width="414dp"
+        android:layout_height="417dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="256dp"
+        android:layout_height="59dp"
+        android:hint="Search Product"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
 
     <TextView
         android:id="@+id/textView5"
@@ -116,17 +123,6 @@
         app:layout_constraintTop_toBottomOf="@+id/CurrencyP"
         app:layout_constraintVertical_bias="0.0" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="256dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="28dp"
-        android:hint="Search Product"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bgsalesentry" />
-
     <Button
         android:id="@+id/backdash1"
         android:layout_width="50dp"
@@ -137,9 +133,9 @@
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/SalesLV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.196" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

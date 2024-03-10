@@ -4,133 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundaddstocks"
-    tools:context=".AddStocksView" >
+    android:background="@drawable/backgroundaddstocksmod"
+    tools:context=".AddStocksView">
 
-
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="81dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.187">
-
-        <AutoCompleteTextView
-            android:id="@+id/productstock"
-            android:layout_width="260dp"
-            android:layout_height="57dp"
-
-            android:fontFamily="@font/bebas_neue"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:textColor="#7743DB"
-
-            android:completionHint="Select Product"
-            android:completionThreshold="1"
-            android:hint="Enter Product"
-            android:background="@android:color/transparent"
-            android:textAlignment="center"
-            android:textColorHint="#7743DB"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.201" />
-    </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:fontFamily="@font/bebas_neue"
-        android:textStyle="bold"
-        android:textSize="23dp"
-        android:textColor="#7743DB"
-
+        android:id="@+id/autoquan"
+        android:layout_width="152dp"
+        android:layout_height="61dp"
+        android:background="@android:color/transparent"
         android:ems="10"
+        android:fontFamily="@font/bebas_neue"
         android:hint="Quantity"
         android:inputType="number"
-        android:background="@android:color/transparent"
         android:textAlignment="center"
-        android:textColorHint="#7743DB"
+        android:textColor="#7743DB"
+        android:textColorHint="#C7C8CC"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/autoremaining"
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productstock"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <AutoCompleteTextView
+        android:id="@+id/productstock"
+        android:layout_width="268dp"
+        android:layout_height="62dp"
+
+        android:background="@android:color/transparent"
+        android:completionHint="Select Product"
+        android:completionThreshold="1"
+        android:fontFamily="@font/bebas_neue"
+
+        android:hint="Enter Product"
+        android:textAlignment="center"
+        android:textColor="#7743DB"
+        android:textColorHint="#C7C8CC"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.276" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="153dp"
+        android:id="@+id/autoremaining"
+        android:layout_width="152dp"
         android:layout_height="61dp"
-        android:fontFamily="@font/bebas_neue"
-        android:textStyle="bold"
-        android:textSize="23dp"
-        android:textColor="#7743DB"
-
-        android:ems="10"
-        android:hint="Remaining"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="368dp"
         android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/bebas_neue"
+        android:hint="Remaining"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#7743DB"
+        android:textColor="#7743DB"
+        android:textColorHint="#C7C8CC"
+        android:textSize="23dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintTop_toBottomOf="@+id/productstock" />
 
     <EditText
-        android:id="@+id/editTextNumber3"
-        android:layout_width="154dp"
-        android:layout_height="59dp"
-        android:fontFamily="@font/bebas_neue"
-        android:textStyle="bold"
-        android:textSize="23dp"
-        android:textColor="#7743DB"
-
-        android:ems="10"
+        android:id="@+id/autoprice"
+        android:layout_width="152dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="248dp"
         android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/bebas_neue"
+
         android:hint="Price"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#7743DB"
+        android:textColor="#7743DB"
+        android:textColorHint="#C7C8CC"
+        android:textSize="23dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintTop_toBottomOf="@+id/autoquan"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextNumber4"
-        android:layout_width="148dp"
+        android:id="@+id/autocost"
+        android:layout_width="152dp"
         android:layout_height="61dp"
-        android:fontFamily="@font/bebas_neue"
-        android:textStyle="bold"
-        android:textSize="23dp"
-        android:textColor="#7743DB"
-
-        android:ems="10"
+        android:layout_marginBottom="248dp"
         android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/bebas_neue"
+
         android:hint="Cost"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#7743DB"
+        android:textColor="#7743DB"
+        android:textColorHint="#C7C8CC"
+        android:textSize="23dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/autoprice"
+        app:layout_constraintTop_toBottomOf="@+id/autoremaining"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/testaddstocks"
@@ -143,12 +131,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <Button
         android:id="@+id/backstocks"
-        android:layout_width="40dp"
-        android:layout_height="45dp"
+        android:layout_width="46dp"
+        android:layout_height="52dp"
         android:background="@drawable/backarrow"
         android:backgroundTint="#7743DB"
         android:text="Back"
