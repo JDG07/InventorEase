@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SalesEntry">
 
+
     <TextView
         android:id="@+id/bgsalesentry"
         android:layout_width="415dp"
@@ -18,17 +19,63 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1ec2d4"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/SalesLV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Product Name"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Quantity"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Price"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Total"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="412dp"
-        android:layout_height="481dp"
+        android:id="@+id/SalesLV"
+        android:layout_width="414dp"
+        android:layout_height="417dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toTopOf="@+id/SaveSalesEntry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/CurrencyP"
@@ -67,15 +114,29 @@
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
-        android:layout_width="247dp"
-        android:layout_height="42dp"
+        android:layout_width="256dp"
+        android:layout_height="59dp"
         android:layout_marginTop="16dp"
         android:hint="Search Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bgsalesentry"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.049" />
+
+    <Button
+        android:id="@+id/backdash1"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/backarrow"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/SalesLV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

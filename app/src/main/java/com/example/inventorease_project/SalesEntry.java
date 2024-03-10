@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +40,24 @@ Dialog CDSales;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sales_entry);
         CDSales = new Dialog(this);
+
+        Button backdash1 = findViewById(R.id.backdash1);
+
+        backdash1.setOnClickListener(view ->{
+            Intent intent = new Intent (SalesEntry.this,MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
+        });
+
+    //// list view
+        ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
+
+        // modify
+        //adapter = new ProductListAdapter(this,R.layout.saleslistviewlayout,productNames);
+        //SalesLV.setAdapter(adapter);
 
 
 

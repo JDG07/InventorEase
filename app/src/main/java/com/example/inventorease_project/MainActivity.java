@@ -1,9 +1,11 @@
 package com.example.inventorease_project;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import pl.droidsonroids.gif.GifDrawable;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
         ImageButton additemsbutton = findViewById(R.id.additemsbutton);

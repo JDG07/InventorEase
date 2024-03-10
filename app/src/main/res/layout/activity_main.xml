@@ -4,70 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrounddashboard"
-    tools:context=".MainActivity" >
+    android:background="@drawable/backgrounddashboardmodified"
+    tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/addstocksbutton"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:background="@drawable/add_stocks"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        android:background="@drawable/addstocksmod"
         android:contentDescription="null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.728"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/additemsbutton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.379" />
 
     <ImageButton
         android:id="@+id/productlistbutton"
-        android:layout_width="107dp"
-        android:layout_height="103dp"
-        android:background="@drawable/product_list"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        android:background="@drawable/product_listmod"
         android:contentDescription="null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintTop_toBottomOf="@+id/additemsbutton"
+        app:layout_constraintVertical_bias="0.042" />
 
     <ImageButton
         android:id="@+id/salesentrybutton"
-        android:layout_width="104dp"
-        android:layout_height="102dp"
-        android:background="@drawable/sales_entry"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        android:background="@drawable/sales_entrymod"
         android:contentDescription="null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.725"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/productlistbutton"
+        app:layout_constraintTop_toBottomOf="@+id/addstocksbutton"
+        app:layout_constraintVertical_bias="0.042" />
 
     <ImageButton
         android:id="@+id/statisticsbutton"
-        android:layout_width="104dp"
-        android:layout_height="106dp"
-        android:background="@drawable/statistics"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        android:background="@drawable/statisticsmod"
         android:contentDescription="null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintTop_toBottomOf="@+id/productlistbutton"
+        app:layout_constraintVertical_bias="0.085" />
 
     <ImageButton
         android:id="@+id/additemsbutton"
-        android:layout_width="103dp"
-        android:layout_height="107dp"
-        android:background="@drawable/add_item"
+        android:layout_width="125dp"
+        android:layout_height="120dp"
+        android:background="@drawable/additemmod"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.379" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifimage1"
+        android:layout_width="407dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="-230dp"
+        android:src="@drawable/inventor_ease_dashboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

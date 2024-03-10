@@ -3,11 +3,13 @@ package com.example.inventorease_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +25,13 @@ public class AddItemViews extends AppCompatActivity {
     //vincepogi
     public static AutoCompleteTextView productnameCVT;
     public static EditText quantityET, costET, priceET,prodET;
-    Button addpBTN,backitem,plistb;
+    Button addpBTN,plistb;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_add_item_views);
 
          prodET =findViewById(R.id.prodET);
@@ -36,7 +39,7 @@ public class AddItemViews extends AppCompatActivity {
          costET = findViewById(R.id.costET);
          priceET = findViewById(R.id.priceET);
          addpBTN = findViewById(R.id.addpBTN);
-         backitem= findViewById(R.id.backitem);
+         ImageButton backitem= findViewById(R.id.backitem);
          plistb = findViewById(R.id.plistb);
 
 

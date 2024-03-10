@@ -147,9 +147,9 @@
 
     <Button
         android:id="@+id/backstocks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
+        android:layout_width="40dp"
+        android:layout_height="45dp"
+        android:background="@drawable/backarrow"
         android:backgroundTint="#7743DB"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"

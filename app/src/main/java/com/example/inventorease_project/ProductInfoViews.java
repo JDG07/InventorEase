@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class ProductInfoViews extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_app_info_views);
 
         prodinfo = findViewById(R.id.prodinfoET);
@@ -31,6 +33,7 @@ public class ProductInfoViews extends AppCompatActivity {
         Button saveBTN = findViewById(R.id.saveBTN);
         Button deleteBTN = findViewById(R.id.deleteBTN);
         Button editBTN = findViewById(R.id.editBTN);
+        Button backplist =findViewById(R.id.backplist);
 
         //////////////// clickable false
         saveBTN.setClickable(false);
@@ -76,7 +79,11 @@ public class ProductInfoViews extends AppCompatActivity {
             }
         });
 
-
+        backplist.setOnClickListener(view -> {
+            Intent intent2 = new Intent(ProductInfoViews.this, ProductListViews.class);
+            startActivity(intent2);
+            Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
+        });
 
     }
     private void saveChanges(String originalProductName){
