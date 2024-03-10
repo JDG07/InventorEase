@@ -5,14 +5,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +35,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -46,11 +59,14 @@ Dialog CDSales;
 
 
     public static AutoCompleteTextView autoCompleteTextView;
+    final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sales_entry);
+        askPermissions();
+
         CDSales = new Dialog(this);
 
 
@@ -156,6 +172,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
+                       createPDF();
 
                     }
                 });
@@ -214,4 +231,51 @@ Dialog CDSales;
         Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
     }
+
+    private void askPermissions (){
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+    }
+    private void createPDF(){
+        PdfDocument document = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080,1920,1).create();
+        PdfDocument.Page page = document.startPage(pageInfo);
+
+        Canvas canvas = page.getCanvas();
+        Paint paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(42);
+
+        String receipttxt = "SALES";
+        float x = 500;
+        float y = 800;
+
+        canvas.drawText(receipttxt,x,y,paint);
+        document.finishPage(page);
+
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String filename = "examplereceipt.pdf";
+        File file = new File(downloadsDir,filename);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            document.writeTo(fos);
+            document.close();
+            fos.close();
+            Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            Log.d("mylog","error while writing" + e.toString());
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+private void convertXMLtoPDF (){
+        View view = LayoutInflater.from (this).inflate(R.layout.salesreceiptlayout,null);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.R){
+
+        }
+}
 }

@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157"
+        app:layout_constraintVertical_bias="0.189"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -86,7 +86,8 @@
 
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
@@ -95,10 +96,10 @@
         android:hint="Search Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <TextView
         android:id="@+id/textView5"
