@@ -193,9 +193,6 @@ Dialog CDSales;
                 CDSales.show();
 
             });
-
-
-
     }
     public void addSales(){
         String prodsales = String.valueOf(productsalesET.getText());

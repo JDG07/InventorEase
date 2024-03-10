@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -21,12 +22,22 @@ public class AddStocksView extends AppCompatActivity {
 
     public static AutoCompleteTextView productstock;
     public static ArrayList<String> prodstocksNames = new ArrayList<>();
+
+    public static TextView autoremainingET, autopriceET,autocostET,autoquanET;
+
+    public static ArrayList<ProductList> prodstocks = AddItemViews.productList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_add_stocks_view);
         Button backstocks = findViewById(R.id.backstocks);
+        autoremainingET = findViewById(R.id.autoremaining);
+        autopriceET = findViewById(R.id.autoprice);
+        autoquanET = findViewById(R.id.autoquan);
+        autocostET = findViewById(R.id.autocost);
+        Button testaddstocks = findViewById(R.id.testaddstocks);
+
 
 
         backstocks.setOnClickListener(view -> {
@@ -35,9 +46,7 @@ public class AddStocksView extends AppCompatActivity {
             Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
         });
 
-        /////////// autocomplete textview should show dropdown with existing product names
 
-        ArrayList<ProductList> prodstocks = AddItemViews.productList;
 
 
         for (ProductList product : prodstocks) {
@@ -50,16 +59,85 @@ public class AddStocksView extends AppCompatActivity {
         productstock.setThreshold(1);
         productstock.setAdapter(adapter);
 
-    }
-
-   /* private void fillininfo (){
         productstock.setOnItemClickListener((parent, view, position, id) -> {
-            /// when item is click it should compare the value to the arraylist
-            /// select position and carry the values of the designated value (cost,price,quantity)
+            // Clear previous selection
+            autoremainingET.setText("");
+            autopriceET.setText("");
+            autocostET.setText("");
 
+            // Get the selected product name from the adapter
+            String selectedProductName = (String) parent.getItemAtPosition(position);
+
+            // Find the corresponding ProductList object
+            ProductList searchedProduct = null;
+            for (ProductList product : prodstocks) {
+                if (product.getPname().equals(selectedProductName)) {
+                    searchedProduct = product;
+                    break;
+                }
+            }
+
+            if (searchedProduct != null) {
+                int auremaining = searchedProduct.getQuantity();
+                int auprice = searchedProduct.getPrice();
+                int aucost = searchedProduct.getCost();
+
+                autoremainingET.setText(String.valueOf(auremaining));
+                autopriceET.setText(String.valueOf(auprice));
+                autocostET.setText(String.valueOf(aucost));
+            } else {
+                Log.e("Error", "Selected product not found");
+            }
+        });
+
+        testaddstocks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addStock();
+            }
         });
 
     }
-*/
-}
+    public void addStock (){
+        String selectedProductName = String.valueOf(productstock.getText());
+
+
+        String quantityStr = String.valueOf(autoquanET.getText());
+        if (quantityStr.isEmpty()) {
+            Toast.makeText(this, "Please enter a quantity", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int quantityToAdd = Integer.parseInt(quantityStr);
+
+        // Find the corresponding ProductList object
+        ProductList searchedProduct = null;
+        for (ProductList product : prodstocks) {
+            if (product.getPname().equals(selectedProductName)) {
+                searchedProduct = product;
+                break;
+            }
+        }
+        if (searchedProduct != null) {
+            int currentQuantity = searchedProduct.getQuantity();
+            searchedProduct.setQuantity(currentQuantity + quantityToAdd);
+
+            // Optionally, update the autoremainingET to reflect the updated quantity
+            autoremainingET.setText(String.valueOf(searchedProduct.getQuantity()));
+            Toast.makeText(this, "Stock added successfully", Toast.LENGTH_SHORT).show();
+
+            productstock.setText("");
+            autocostET.setText("");
+            autopriceET.setText("");
+            autoremainingET.setText("");
+            autoquanET.setText("");
+        } else {
+            Log.e("Error", "Selected product not found");
+            Toast.makeText(this, "Error: Product not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    }
+
+
 
