@@ -172,7 +172,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                       createPDF();
+                       convertXMLtoPDF();
 
                     }
                 });
@@ -275,7 +275,47 @@ private void convertXMLtoPDF (){
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
         if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.R){
+        this.getDisplay().getRealMetrics(displayMetrics);
 
         }
+        else this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels,View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels,View.MeasureSpec.EXACTLY));
+
+       
+        PdfDocument document = new PdfDocument();
+
+        int viewWidth = view.getMeasuredWidth();
+        int viewHeight = view.getMeasuredHeight();
+        Log.d("mylog","width"+viewWidth);
+    Log.d("mylog","height"+viewHeight);
+
+        PdfDocument.PageInfo pageinfo = new PdfDocument.PageInfo.Builder(viewWidth,viewHeight,1).create();
+        PdfDocument.Page page = document.startPage(pageinfo);
+
+        //
+    Canvas canvas = page.getCanvas();
+    view.draw(canvas);
+
+    //
+    document.finishPage(page);
+
+    //
+    File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+    String filename = "examplereceipt.pdf";
+    File file = new File(downloadsDir,filename);
+    try {
+        FileOutputStream fos = new FileOutputStream(file);
+        document.writeTo(fos);
+        document.close();
+        fos.close();
+        Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
+    } catch (FileNotFoundException e) {
+        Log.d("mylog","error while writing" + e.toString());
+        throw new RuntimeException(e);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+
 }
 }
