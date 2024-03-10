@@ -55,10 +55,15 @@ Dialog CDSales;
     public static TextView totalpriceTV;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
+
     public static ProductListAdapter salesadapter;
 
 
     public static AutoCompleteTextView autoCompleteTextView;
+
+    private ArrayList<String> searchproduct;
+    private ArrayList<ProductList> products;
+    private SalesListAdapter salesListAdapter;
     final static int REQUEST_CODE = 1122;
 
 
@@ -78,19 +83,45 @@ Dialog CDSales;
 
         Button backdash1 = findViewById(R.id.backdash1);
 
-        backdash1.setOnClickListener(view ->{
-            Intent intent = new Intent (SalesEntry.this,MainActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
+        backdash1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SalesEntry.this);
+                builder.setTitle("Cancel Transaction");
+                builder.setMessage("Are you sure you want to cancel the transaction and go back to the main screen?");
+
+                builder.setPositiveButton("Yes", (dialog, which) -> {
+                    updateQuantityInProductList();
+                    clearSalesListView();
+
+                    if (salesListAdapter != null) {
+                        salesListAdapter.notifyDataSetChanged();
+                    } else {
+                        // Reinitialize the adapter if it is null
+                        ArrayList<SalesArrayClass> zzz = salesarray;
+                        salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
+                        ListView SalesLV = findViewById(R.id.SalesLV);
+                        SalesLV.setAdapter(salesadapter);
+                    }
+
+                    Intent intent = new Intent(SalesEntry.this, MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(SalesEntry.this, "Going Back", Toast.LENGTH_SHORT).show();
+                });
+
+                builder.setNegativeButton("No", (dialog, which) -> {
+                    // Handle 'No' button click
+                });
+
+                builder.show();
+
+            }
         });
 
 
 
-
-
-
-        ArrayList <ProductList> products = AddItemViews.productList;
-        ArrayList <String> searchproduct = new ArrayList<>();
+         products = AddItemViews.productList;
+         searchproduct = new ArrayList<>();
 
         for (ProductList product: products) {
             searchproduct.add(product.getPname());
@@ -144,6 +175,40 @@ Dialog CDSales;
 
                     int remainingstockget = searchedProduct.getQuantity();
                     remainingstockET.setText(String.valueOf(remainingstockget));
+
+
+
+                    quantitysoldET.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if (!s.toString().isEmpty()) {
+                                int currentQuan = Integer.parseInt(s.toString());
+                                int newStock = remainingstockget - currentQuan;
+
+                                // Check if the new stock value is not negative
+                                if (newStock >= 0) {
+                                    remainingstockET.setText(String.valueOf(newStock));
+                                } else {
+                                    // Handle the case where the entered quantity is greater than the remaining stock
+                                    Toast.makeText(SalesEntry.this, "Not enough stock available", Toast.LENGTH_SHORT).show();
+                                    remainingstockET.setText(String.valueOf(remainingstockget)); // Reset to the original value
+                                }
+                            } else {
+
+                                remainingstockET.setText(String.valueOf(remainingstockget)); // Reset to the original value
+                            }
+                        }
+                    });
                 } else {
 
                    Log.e("Error", "Selected position is out of bounds");
@@ -174,7 +239,8 @@ Dialog CDSales;
                 checkoutbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        updateQuantityInProductList();
+                        clearSalesListView();
+                        salesadapter.notifyDataSetChanged();
                     }
                 });
 
@@ -183,7 +249,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                       createPDF();
+                      // createPDF();
 
                     }
                 });
@@ -228,6 +294,29 @@ Dialog CDSales;
         String pricesales = pricesoldET.getText().toString();
         String totsales = totalsoldET.getText().toString();
 
+        String selectedProductName = autoCompleteTextView.getText().toString();
+        int selectedPosition = searchproduct.indexOf(selectedProductName);
+
+        if (selectedPosition >= 0 && selectedPosition < products.size()) {
+            ProductList selectedProduct = products.get(selectedPosition);
+            int remainingStock = selectedProduct.getQuantity();
+            int quantitySold = Integer.parseInt(quansales);
+
+            if (quantitySold > remainingStock) {
+                showAlertDialog("Quantity exceeds remaining stock", "Please enter a valid quantity.");
+                quantitysoldET.setText("");
+                return;
+            }
+
+            // Update the remaining stock in your ProductList
+            selectedProduct.setQuantity(remainingStock - quantitySold);
+        } else {
+
+            Log.e("Error", "Selected position is out of bounds");
+        }
+
+
+
         SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
         salesarray.add(salesEntry);
         updateTotalPrice();
@@ -246,6 +335,24 @@ Dialog CDSales;
         Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
     }
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();
+    }
+    private void clearSalesListView() {
+
+        salesarray.clear();
+
+        autoCompleteTextView.setText("");
+        productsalesET.getText().clear();
+        quantitysoldET.getText().clear();
+        pricesoldET.getText().clear();
+        totalsoldET.getText().clear();
+
+    }
     private void updateTotalPrice() {
         int sum = 0;
 
@@ -254,7 +361,7 @@ Dialog CDSales;
                 int total = Integer.parseInt(entry.getSalestotal());
                 sum += total;
             } catch (NumberFormatException e) {
-                // Handle the case where entry.getSalestotal() is not a valid integer
+
                 Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
             }
         }
@@ -262,24 +369,22 @@ Dialog CDSales;
         // Update totalpriceTV
         totalpriceTV.setText(String.valueOf(sum));
     }
-    private void updateQuantityInProductList(){
-        for (SalesArrayClass entry : salesarray){
+    private void updateQuantityInProductList() {
+        for (SalesArrayClass entry : salesarray) {
             String productName = entry.getSalesproduct();
             int soldQuantity = Integer.parseInt(entry.getSalesqty());
 
             for (ProductList product : AddItemViews.productList) {
-                if (product.getPname().equals(productName)){
+                if (product.getPname().equals(productName)) {
 
-                    int remainingQuantity = product.getQuantity() - soldQuantity;
+                    // Revert the remaining quantity
+                    int remainingQuantity = product.getQuantity() + soldQuantity;
                     product.setQuantity(remainingQuantity);
                     break;
                 }
             }
         }
     }
-
-
-
 
 
     private void askPermissions (){
