@@ -122,8 +122,7 @@ public class AddStocksView extends AppCompatActivity {
             int currentQuantity = searchedProduct.getQuantity();
             searchedProduct.setQuantity(currentQuantity + quantityToAdd);
 
-            // Optionally, update the autoremainingET to reflect the updated quantity
-            autoremainingET.setText(String.valueOf(searchedProduct.getQuantity()));
+
             Toast.makeText(this, "Stock added successfully", Toast.LENGTH_SHORT).show();
 
             productstock.setText("");

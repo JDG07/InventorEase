@@ -50,9 +50,9 @@ Dialog CDSales;
     public static EditText pricesoldET;
     public static EditText remainingstockET;
 
-    public static Button addsales,backsales;
+    public static Button addsales,backsales,checkoutbtn;
 
-    public static TextView prodnameTV, quanTV, priceTV, totalTV;
+    public static TextView totalpriceTV;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
     public static ProductListAdapter salesadapter;
@@ -166,13 +166,23 @@ Dialog CDSales;
 
 
 
+                 totalpriceTV = findViewById(R.id.totalpriceTV);
+                 checkoutbtn = findViewById(R.id.checkoutbtn);
+
+                checkoutbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                    }
+                });
 
 
                 addsales.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                        addSales();
-                       createPDF();
+                      // createPDF();
 
                     }
                 });
@@ -212,13 +222,15 @@ Dialog CDSales;
             });
     }
     public void addSales(){
-        String prodsales = String.valueOf(productsalesET.getText());
-        String quansales = String.valueOf(quantitysoldET.getText());
-        String pricesales = String.valueOf(pricesoldET.getText());
-        String totsales = String.valueOf(totalsoldET.getText());
+        String prodsales = productsalesET.getText().toString();
+        String quansales = quantitysoldET.getText().toString();
+        String pricesales = pricesoldET.getText().toString();
+        String totsales = totalsoldET.getText().toString();
 
         SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
         salesarray.add(salesEntry);
+        updateTotalPrice();
+
 
         productsalesET.getText().clear();
         quantitysoldET.getText().clear();
@@ -228,9 +240,31 @@ Dialog CDSales;
         CDSales.dismiss();
         autoCompleteTextView.setText("");
 
+
+
         Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
     }
+    private void updateTotalPrice() {
+        int sum = 0;
+
+        for (SalesArrayClass entry : salesarray) {
+            try {
+                int total = Integer.parseInt(entry.getSalestotal());
+                sum += total;
+            } catch (NumberFormatException e) {
+                // Handle the case where entry.getSalestotal() is not a valid integer
+                Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
+            }
+        }
+
+        // Update totalpriceTV
+        totalpriceTV.setText(String.valueOf(sum));
+    }
+
+
+
+
 
     private void askPermissions (){
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
