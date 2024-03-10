@@ -172,8 +172,7 @@ Dialog CDSales;
                 checkoutbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
+                        updateQuantityInProductList();
                     }
                 });
 
@@ -260,6 +259,21 @@ Dialog CDSales;
 
         // Update totalpriceTV
         totalpriceTV.setText(String.valueOf(sum));
+    }
+    private void updateQuantityInProductList(){
+        for (SalesArrayClass entry : salesarray){
+            String productName = entry.getSalesproduct();
+            int soldQuantity = Integer.parseInt(entry.getSalesqty());
+
+            for (ProductList product : AddItemViews.productList) {
+                if (product.getPname().equals(productName)){
+
+                    int remainingQuantity = product.getQuantity() - soldQuantity;
+                    product.setQuantity(remainingQuantity);
+                    break;
+                }
+            }
+        }
     }
 
 
