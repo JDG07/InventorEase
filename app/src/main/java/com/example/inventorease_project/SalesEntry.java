@@ -44,29 +44,26 @@ import java.util.ArrayList;
 
 public class SalesEntry extends AppCompatActivity {
 Dialog CDSales;
-    public  EditText productsalesET;
-    public  EditText quantitysoldET;
-    public  EditText totalsoldET;
-    public  EditText pricesoldET;
-    public  EditText remainingstockET;
+    public static EditText productsalesET;
+    public static EditText quantitysoldET;
+    public static EditText totalsoldET;
+    public static EditText pricesoldET;
+    public static EditText remainingstockET;
 
-    public  Button addsales,backsales,checkoutbtn;
+    public static Button addsales,backsales,checkoutbtn;
 
-    public  TextView totalpriceTV;
+    public static TextView totalpriceTV;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
-    public ProductListAdapter salesadapter;
+    public static ProductListAdapter salesadapter;
 
 
-    public  AutoCompleteTextView autoCompleteTextView;
+    public static AutoCompleteTextView autoCompleteTextView;
 
     private ArrayList<String> searchproduct;
     private ArrayList<ProductList> products;
     private SalesListAdapter salesListAdapter;
-    public ListView SalesLV;
-
-    public TextView receiptProdnameTV, receiptQtyTV, receiptPriceTV,receiptTotalTV;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,37 +76,43 @@ Dialog CDSales;
 
 
 
+
+
         Button backdash1 = findViewById(R.id.backdash1);
-         SalesLV = findViewById(R.id.SalesLV);
 
-        backdash1.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(SalesEntry.this);
-            builder.setTitle("Cancel Transaction");
-            builder.setMessage("Are you sure you want to cancel the transaction and go back to the main screen?");
+        backdash1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SalesEntry.this);
+                builder.setTitle("Cancel Transaction");
+                builder.setMessage("Are you sure you want to cancel the transaction and go back to the main screen?");
 
-            builder.setPositiveButton("Yes", (dialog, which) -> {
-                updateQuantityInProductList();
-                clearSalesListView();
+                builder.setPositiveButton("Yes", (dialog, which) -> {
+                    updateQuantityInProductList();
+                    clearSalesListView();
 
-                if (salesListAdapter != null) {
-                    salesListAdapter.notifyDataSetChanged();
-                } else {
-                    ArrayList<SalesArrayClass> zzz = salesarray;
-                    salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
+                    if (salesListAdapter != null) {
+                        salesListAdapter.notifyDataSetChanged();
+                    } else {
+                        // Reinitialize the adapter if it is null
+                        ArrayList<SalesArrayClass> zzz = salesarray;
+                        salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
+                        ListView SalesLV = findViewById(R.id.SalesLV);
+                        SalesLV.setAdapter(salesadapter);
+                    }
 
-                    SalesLV.setAdapter(salesadapter);
-                }
+                    Intent intent = new Intent(SalesEntry.this, MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(SalesEntry.this, "Going Back", Toast.LENGTH_SHORT).show();
+                });
 
-                Intent intent = new Intent(SalesEntry.this, MainActivity.class);
-                startActivity(intent);
-                Toast.makeText(SalesEntry.this, "Going Back", Toast.LENGTH_SHORT).show();
-            });
+                builder.setNegativeButton("No", (dialog, which) -> {
+                    // Handle 'No' button click
+                });
 
-            builder.setNegativeButton("No", (dialog, which) -> {
+                builder.show();
 
-            });
-            builder.show();
-
+            }
         });
 
 
@@ -139,6 +142,7 @@ Dialog CDSales;
                 totalsoldET = CDSales.findViewById(R.id.totalsoldET);
                 pricesoldET = CDSales.findViewById(R.id.pricesoldET);
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
+
 
 
                 backsales= CDSales.findViewById(R.id.backsales);
@@ -208,16 +212,19 @@ Dialog CDSales;
                    Log.e("Error", "Selected position is out of bounds");
                 }
 
-                backsales.setOnClickListener(v -> {
-                    CDSales.dismiss();
-                    autoCompleteTextView.setText("");
-                    productsalesET.setText("");
-                    quantitysoldET.setText("");
-                    pricesoldET.setText("");
-                    totalsoldET.setText("");
+                backsales.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CDSales.dismiss();
+                        autoCompleteTextView.setText("");
+                        productsalesET.setText("");
+                        quantitysoldET.setText("");
+                        pricesoldET.setText("");
+                        totalsoldET.setText("");
+                    }
                 });
 
-                 SalesLV = (ListView) findViewById(R.id.SalesLV);
+                ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
                 ArrayList<SalesArrayClass> zzz = salesarray;
                 SalesListAdapter salesadapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, zzz);
                 SalesLV.setAdapter(salesadapter);
@@ -240,7 +247,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                       createPDF();
+                      // createPDF();
 
                     }
                 });
@@ -274,7 +281,9 @@ Dialog CDSales;
                         }
                     }
                 });
+
                 CDSales.show();
+
             });
     }
     public void addSales(){
@@ -282,10 +291,6 @@ Dialog CDSales;
         String quansales = quantitysoldET.getText().toString();
         String pricesales = pricesoldET.getText().toString();
         String totsales = totalsoldET.getText().toString();
-
-        if (productsalesET == null || quantitysoldET == null || pricesoldET == null || totalsoldET == null) {
-            return;
-        }
 
         String selectedProductName = autoCompleteTextView.getText().toString();
         int selectedPosition = searchproduct.indexOf(selectedProductName);
@@ -308,6 +313,8 @@ Dialog CDSales;
             Log.e("Error", "Selected position is out of bounds");
         }
 
+
+
         SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
         salesarray.add(salesEntry);
         updateTotalPrice();
@@ -320,6 +327,8 @@ Dialog CDSales;
 
         CDSales.dismiss();
         autoCompleteTextView.setText("");
+
+
 
         Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
@@ -334,25 +343,14 @@ Dialog CDSales;
     private void clearSalesListView() {
 
         salesarray.clear();
+
         autoCompleteTextView.setText("");
+        productsalesET.getText().clear();
+        quantitysoldET.getText().clear();
+        pricesoldET.getText().clear();
+        totalsoldET.getText().clear();
 
-        if (productsalesET != null) {
-            productsalesET.getText().clear();
-        }
-
-        if (quantitysoldET != null) {
-            quantitysoldET.getText().clear();
-        }
-
-        if (pricesoldET != null) {
-            pricesoldET.getText().clear();
-        }
-
-        if (totalsoldET != null) {
-            totalsoldET.getText().clear();
-        }
     }
-
     private void updateTotalPrice() {
         int sum = 0;
 
@@ -390,56 +388,19 @@ Dialog CDSales;
     private void askPermissions (){
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
     }
-
-    private void inputDATA (){
-
-    }
     private void createPDF(){
-        PdfDocument document = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080,1920,1).create();
-        PdfDocument.Page page = document.startPage(pageInfo);
-
-        Canvas canvas = page.getCanvas();
-        Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(42);
-
-        String receipttxt = "SALES";
-        float x = 500;
-        float y = 800;
-
-        canvas.drawText(receipttxt,x,y,paint);
-        document.finishPage(page);
-
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String filename = "examplereceipt.pdf";
-        File file = new File(downloadsDir,filename);
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            document.writeTo(fos);
-            document.close();
-            fos.close();
-            Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e) {
-            Log.d("mylog","error while writing" + e);
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-private void convertXMLtoPDF (){
-        View view = LayoutInflater.from (this).inflate(R.layout.salesreceiptlayout,null);
+        // inflating the layout
+        View view = LayoutInflater.from(this).inflate((R.layout.salesreceiptlayout),null);
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
-        if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.R){
-        this.getDisplay().getRealMetrics(displayMetrics);
+        if (Build.VERSION.SDK_INT  >= Build.VERSION_CODES.R){
+            this.getDisplay().getRealMetrics(displayMetrics);
+        } else this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        }
-        else this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels,View.MeasureSpec.EXACTLY),
+        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
                 View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels,View.MeasureSpec.EXACTLY));
+
+        view.layout(0,0,displayMetrics.widthPixels,displayMetrics.heightPixels);
 
 
         PdfDocument document = new PdfDocument();
@@ -449,32 +410,32 @@ private void convertXMLtoPDF (){
         Log.d("mylog","width"+viewWidth);
     Log.d("mylog","height"+viewHeight);
 
-        PdfDocument.PageInfo pageinfo = new PdfDocument.PageInfo.Builder(viewWidth,viewHeight,1).create();
-        PdfDocument.Page page = document.startPage(pageinfo);
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080,1920,1).create();
+        PdfDocument.Page page = document.startPage(pageInfo);
 
-        //
-    Canvas canvas = page.getCanvas();
-    view.draw(canvas);
+        Canvas canvas = page.getCanvas();
+        view.draw(canvas);
 
-    //
-    document.finishPage(page);
+        document.finishPage(page);
 
-    //
-    File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-    String filename = "examplereceipt.pdf";
-    File file = new File(downloadsDir,filename);
-    try {
-        FileOutputStream fos = new FileOutputStream(file);
-        document.writeTo(fos);
-        document.close();
-        fos.close();
-        Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
-    } catch (FileNotFoundException e) {
-        Log.d("mylog","error while writing" + e.toString());
-        throw new RuntimeException(e);
-    } catch (IOException e) {
-        throw new RuntimeException(e);
+        // creating PDF
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String filename = "gumanapls.pdf";
+        File file = new File(downloadsDir,filename);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            document.writeTo(fos);
+            document.close();
+            fos.close();
+            Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            Log.d("mylog","error while writing" + e.toString());
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-}
+
 }
