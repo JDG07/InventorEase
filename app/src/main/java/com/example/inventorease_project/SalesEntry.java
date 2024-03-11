@@ -119,8 +119,6 @@ ConstraintLayout SLL;
             }
         });
 
-
-
          products = AddItemViews.productList;
          searchproduct = new ArrayList<>();
 
@@ -255,6 +253,7 @@ ConstraintLayout SLL;
                     @Override
                     public void onClick(View v) {
                        addSales();
+                       salesadapter.notifyDataSetChanged();
 
                     }
                 });
@@ -382,7 +381,6 @@ ConstraintLayout SLL;
             }
         }
 
-        // Update totalpriceTV
         totalpriceTV.setText(String.valueOf(sum));
     }
     private void updateQuantityInProductList() {
