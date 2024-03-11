@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +44,7 @@ public class AddItemViews extends AppCompatActivity {
          addpBTN = findViewById(R.id.addpBTN);
          ImageButton backitem= findViewById(R.id.backitem);
          plistb = findViewById(R.id.plistb);
+
 
 
         backitem.setOnClickListener(view ->{
@@ -134,4 +138,16 @@ private void printArrayLists() {
     Log.d("ArrayLists", "Quantity Data: " + productList);
 
 }
+/* private void backtoast (){
+        LayoutInflater inf = getLayoutInflater();
+        View byu = inf.inflate(R.layout.toastbackcustomlayout,this.findViewById(R.id.backtoast));
+
+        Toast toastb = new Toast(this);
+        toastb.setDuration (Toast.LENGTH_SHORT);
+        toastb.setView(byu);
+    toastb.show();
+
+}
+*/
+
 }

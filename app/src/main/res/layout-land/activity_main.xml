@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/_backgrounddashboardmodified"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/addstocksbutton"
+        android:layout_width="90dp"
+        android:layout_height="87dp"
+        android:background="@drawable/addstocksmod"
+        android:contentDescription="null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintStart_toEndOf="@+id/additemsbutton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <ImageButton
+        android:id="@+id/productlistbutton"
+        android:layout_width="90dp"
+        android:layout_height="87dp"
+        android:background="@drawable/product_listmod"
+        android:contentDescription="null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/additemsbutton"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <ImageButton
+        android:id="@+id/salesentrybutton"
+        android:layout_width="90dp"
+        android:layout_height="87dp"
+        android:background="@drawable/sales_entrymod"
+        android:contentDescription="null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toEndOf="@+id/productlistbutton"
+        app:layout_constraintTop_toBottomOf="@+id/addstocksbutton"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <ImageButton
+        android:id="@+id/statisticsbutton"
+        android:layout_width="90dp"
+        android:layout_height="87dp"
+        android:background="@drawable/statisticsmod"
+        android:contentDescription="null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productlistbutton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/additemsbutton"
+        android:layout_width="90dp"
+        android:layout_height="87dp"
+        android:background="@drawable/additemmod"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifimage1"
+        android:layout_width="406dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="-230dp"
+        android:src="@drawable/inventor_ease_dashboard1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
