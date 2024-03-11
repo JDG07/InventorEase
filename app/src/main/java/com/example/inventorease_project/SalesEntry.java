@@ -44,26 +44,27 @@ import java.util.ArrayList;
 
 public class SalesEntry extends AppCompatActivity {
 Dialog CDSales;
-    public static EditText productsalesET;
-    public static EditText quantitysoldET;
-    public static EditText totalsoldET;
-    public static EditText pricesoldET;
-    public static EditText remainingstockET;
+    public  EditText productsalesET;
+    public  EditText quantitysoldET;
+    public  EditText totalsoldET;
+    public  EditText pricesoldET;
+    public  EditText remainingstockET;
 
-    public static Button addsales,backsales,checkoutbtn;
+    public  Button addsales,backsales,checkoutbtn;
 
-    public static TextView totalpriceTV;
+    public  TextView totalpriceTV;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
-    public static ProductListAdapter salesadapter;
+    public ProductListAdapter salesadapter;
 
 
-    public static AutoCompleteTextView autoCompleteTextView;
+    public  AutoCompleteTextView autoCompleteTextView;
 
     private ArrayList<String> searchproduct;
     private ArrayList<ProductList> products;
     private SalesListAdapter salesListAdapter;
+    public ListView SalesLV;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,39 +80,37 @@ Dialog CDSales;
 
 
         Button backdash1 = findViewById(R.id.backdash1);
+         SalesLV = findViewById(R.id.SalesLV);
 
-        backdash1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(SalesEntry.this);
-                builder.setTitle("Cancel Transaction");
-                builder.setMessage("Are you sure you want to cancel the transaction and go back to the main screen?");
+        backdash1.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SalesEntry.this);
+            builder.setTitle("Cancel Transaction");
+            builder.setMessage("Are you sure you want to cancel the transaction and go back to the main screen?");
 
-                builder.setPositiveButton("Yes", (dialog, which) -> {
-                    updateQuantityInProductList();
-                    clearSalesListView();
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                updateQuantityInProductList();
+                clearSalesListView();
 
-                    if (salesListAdapter != null) {
-                        salesListAdapter.notifyDataSetChanged();
-                    } else {
-                        ArrayList<SalesArrayClass> zzz = salesarray;
-                        salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
-                        ListView SalesLV = findViewById(R.id.SalesLV);
-                        SalesLV.setAdapter(salesadapter);
-                    }
+                if (salesListAdapter != null) {
+                    salesListAdapter.notifyDataSetChanged();
+                } else {
+                    ArrayList<SalesArrayClass> zzz = salesarray;
+                    salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
 
-                    Intent intent = new Intent(SalesEntry.this, MainActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(SalesEntry.this, "Going Back", Toast.LENGTH_SHORT).show();
-                });
+                    SalesLV.setAdapter(salesadapter);
+                }
 
-                builder.setNegativeButton("No", (dialog, which) -> {
+                Intent intent = new Intent(SalesEntry.this, MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(SalesEntry.this, "Going Back", Toast.LENGTH_SHORT).show();
+            });
 
-                });
+            builder.setNegativeButton("No", (dialog, which) -> {
 
-                builder.show();
+            });
 
-            }
+            builder.show();
+
         });
 
 
@@ -211,19 +210,16 @@ Dialog CDSales;
                    Log.e("Error", "Selected position is out of bounds");
                 }
 
-                backsales.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CDSales.dismiss();
-                        autoCompleteTextView.setText("");
-                        productsalesET.setText("");
-                        quantitysoldET.setText("");
-                        pricesoldET.setText("");
-                        totalsoldET.setText("");
-                    }
+                backsales.setOnClickListener(v -> {
+                    CDSales.dismiss();
+                    autoCompleteTextView.setText("");
+                    productsalesET.setText("");
+                    quantitysoldET.setText("");
+                    pricesoldET.setText("");
+                    totalsoldET.setText("");
                 });
 
-                ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
+                 SalesLV = (ListView) findViewById(R.id.SalesLV);
                 ArrayList<SalesArrayClass> zzz = salesarray;
                 SalesListAdapter salesadapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, zzz);
                 SalesLV.setAdapter(salesadapter);
@@ -291,6 +287,11 @@ Dialog CDSales;
         String pricesales = pricesoldET.getText().toString();
         String totsales = totalsoldET.getText().toString();
 
+        if (productsalesET == null || quantitysoldET == null || pricesoldET == null || totalsoldET == null) {
+
+            return;
+        }
+
         String selectedProductName = autoCompleteTextView.getText().toString();
         int selectedPosition = searchproduct.indexOf(selectedProductName);
 
@@ -342,14 +343,25 @@ Dialog CDSales;
     private void clearSalesListView() {
 
         salesarray.clear();
-
         autoCompleteTextView.setText("");
-        productsalesET.getText().clear();
-        quantitysoldET.getText().clear();
-        pricesoldET.getText().clear();
-        totalsoldET.getText().clear();
 
+        if (productsalesET != null) {
+            productsalesET.getText().clear();
+        }
+
+        if (quantitysoldET != null) {
+            quantitysoldET.getText().clear();
+        }
+
+        if (pricesoldET != null) {
+            pricesoldET.getText().clear();
+        }
+
+        if (totalsoldET != null) {
+            totalsoldET.getText().clear();
+        }
     }
+
     private void updateTotalPrice() {
         int sum = 0;
 
@@ -418,7 +430,7 @@ Dialog CDSales;
             fos.close();
             Toast.makeText(this, "Sales Receipt", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
-            Log.d("mylog","error while writing" + e.toString());
+            Log.d("mylog","error while writing" + e);
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
