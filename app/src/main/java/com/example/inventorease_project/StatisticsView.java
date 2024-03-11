@@ -2,7 +2,9 @@ package com.example.inventorease_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ public class StatisticsView extends AppCompatActivity {
     private TextView productCountTextView;
     private TextView inventoryValueTextView;
     private TextView inventoryCostTextView;
+
+    private Button showgraphBTN, backbtn;
 
 
 
@@ -22,10 +26,15 @@ public class StatisticsView extends AppCompatActivity {
         productCountTextView = findViewById(R.id.productCountTextView);
         inventoryValueTextView = findViewById(R.id.inventoryValueTextView);
         inventoryCostTextView = findViewById(R.id.inventoryCostTextView);
-
+        showgraphBTN = findViewById(R.id.showgraphBTN);
+        backbtn = findViewById(R.id.backbtn);
 
         updateStatistics();
 
+        showgraphBTN.setOnClickListener(v -> {
+            Intent intent = new Intent(StatisticsView.this, Chart.class);
+            startActivity(intent);
+        });
 
     }
     private void updateStatistics() {
