@@ -9,10 +9,24 @@
     tools:context=".SalesEntry">
 
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="60dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/search"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681" />
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1ec2d4"
+        android:background="@drawable/plisttxtvlayout"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +43,7 @@
             android:layout_weight="2"
             android:gravity="center"
             android:text="Product Name"
-            android:textColor="#fff"
+            android:textColor="#7743DB"
             android:textSize="20sp" />
 
         <TextView
@@ -39,7 +53,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Quantity"
-            android:textColor="#fff"
+            android:textColor="#7743DB"
             android:textSize="20sp" />
 
         <TextView
@@ -49,7 +63,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Price"
-            android:textColor="#fff"
+            android:textColor="#7743DB"
             android:textSize="20sp" />
 
         <TextView
@@ -59,7 +73,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Total"
-            android:textColor="#fff"
+            android:textColor="#7743DB"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -87,19 +101,22 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57" />
+        app:layout_constraintVertical_bias="0.457" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="256dp"
         android:layout_height="59dp"
-        android:hint="Search Product"
+        android:background="@drawable/actvsalesentrylayout"
+        android:fontFamily="@font/bebas_neue"
+        android:hint=" Search Product"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <TextView
         android:id="@+id/totalpriceTV"

@@ -8,21 +8,86 @@
     tools:context=".ProductListViews">
 
 
-    <ListView
-        android:id="@+id/listviewproducts"
-        android:layout_width="404dp"
-        android:layout_height="685dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/plisttxtvlayout"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.077"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/prodnameTVPL"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Product Name"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/quanTVPL"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Quantity"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/costTVPL"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Cost"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/priceTVPL"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Price"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listviewproducts"
+        android:layout_width="418dp"
+        android:layout_height="631dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/backproduct"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
+        android:layout_width="42dp"
+        android:layout_height="49dp"
         android:background="@drawable/backarrow"
         android:backgroundTint="#7743DB"
         android:text="Back"
@@ -31,6 +96,6 @@
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.007" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

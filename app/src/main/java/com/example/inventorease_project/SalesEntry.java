@@ -116,7 +116,6 @@ Dialog CDSales;
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
 
 
-
                 backsales= CDSales.findViewById(R.id.backsales);
                 addsales= CDSales.findViewById(R.id.addsales);
 
@@ -285,6 +284,10 @@ Dialog CDSales;
 
     private void askPermissions (){
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+    }
+
+    private void inputDATA (){
+
     }
     private void createPDF(){
         // inflating the layout

@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/CDSales"
     android:layout_width="350dp"
-    android:layout_height="650dp"
+    android:layout_height="680dp"
     android:layout_gravity="center"
     android:background="#F9F3CC"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="5dp"
+    >
 
     <TextView
         android:layout_width="342dp"
@@ -21,7 +22,8 @@
     <LinearLayout
         android:id="@+id/custompopupL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="630dp"
+        android:background="@drawable/plisttxtvlayout"
         android:orientation="vertical">
 
 
@@ -31,8 +33,11 @@
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:background="@drawable/buttonborderdashboards"
+            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
-            android:hint="ProductName" />
+            android:hint="ProductName"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/quantitysoldET"
@@ -40,9 +45,12 @@
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:background="@drawable/buttonborderdashboards"
+            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
             android:hint="Quantity"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="132dp"
@@ -58,12 +66,15 @@
 
         <EditText
             android:id="@+id/remainingquantityET"
-            android:layout_width="161dp"
+            android:layout_width="234dp"
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:background="@drawable/buttonborderdashboards"
+            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
-            android:hint="Remaining Stock" />
+            android:hint="Remaining Stock"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="132dp"
@@ -83,6 +94,8 @@
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:background="@drawable/buttonborderdashboards"
+            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
             android:hint="Price" />
 
@@ -97,12 +110,15 @@
             android:text="Total">
 
         </TextView>
+
         <EditText
             android:id="@+id/totalsoldET"
-            android:layout_width="161dp"
+            android:layout_width="234dp"
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:background="@drawable/buttonborderdashboards"
+            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
             android:hint="TOTAL" />
 

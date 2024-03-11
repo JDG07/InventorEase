@@ -11,8 +11,8 @@
     <EditText
         android:id="@+id/autoquan"
         android:layout_width="152dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="56dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="68dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
@@ -23,15 +23,17 @@
         android:textColorHint="#C7C8CC"
         android:textSize="23dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/autoremaining"
-        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productstock" />
+        app:layout_constraintTop_toBottomOf="@+id/productstock"
+        app:layout_constraintVertical_bias="0.0" />
 
     <AutoCompleteTextView
         android:id="@+id/productstock"
-        android:layout_width="268dp"
-        android:layout_height="62dp"
+        android:layout_width="270dp"
+        android:layout_height="74dp"
 
         android:background="@android:color/transparent"
         android:completionHint="Select Product"
@@ -54,8 +56,8 @@
     <EditText
         android:id="@+id/autoremaining"
         android:layout_width="152dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="56dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="68dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
@@ -66,15 +68,17 @@
         android:textColorHint="#C7C8CC"
         android:textSize="23dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productstock" />
+        app:layout_constraintTop_toBottomOf="@+id/productstock"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/autoprice"
         android:layout_width="152dp"
-        android:layout_height="61dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="248dp"
         android:background="@android:color/transparent"
         android:ems="10"
@@ -89,15 +93,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/autoquan"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.598" />
 
     <EditText
         android:id="@+id/autocost"
         android:layout_width="152dp"
-        android:layout_height="61dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="248dp"
         android:background="@android:color/transparent"
         android:ems="10"
@@ -112,10 +116,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toEndOf="@+id/autoprice"
         app:layout_constraintTop_toBottomOf="@+id/autoremaining"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.598" />
 
     <Button
         android:id="@+id/testaddstocks"
