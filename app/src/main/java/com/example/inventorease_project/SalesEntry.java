@@ -44,26 +44,28 @@ import java.util.ArrayList;
 
 public class SalesEntry extends AppCompatActivity {
 Dialog CDSales;
-    public static EditText productsalesET;
-    public static EditText quantitysoldET;
-    public static EditText totalsoldET;
-    public static EditText pricesoldET;
-    public static EditText remainingstockET;
+    public  EditText productsalesET;
+    public  EditText quantitysoldET;
+    public  EditText totalsoldET;
+    public  EditText pricesoldET;
+    public  EditText remainingstockET;
 
-    public static Button addsales,backsales,checkoutbtn;
+    public  Button addsales,backsales,checkoutbtn;
 
-    public static TextView totalpriceTV;
+    public  TextView totalpriceTV;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
-    public static ProductListAdapter salesadapter;
+    public  ProductListAdapter salesadapter;
 
 
-    public static AutoCompleteTextView autoCompleteTextView;
+    public  AutoCompleteTextView autoCompleteTextView;
 
     private ArrayList<String> searchproduct;
     private ArrayList<ProductList> products;
     private SalesListAdapter salesListAdapter;
+
+    public ListView SalesLV;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +75,6 @@ Dialog CDSales;
         askPermissions();
 
         CDSales = new Dialog(this);
-
-
 
 
 
@@ -97,7 +97,7 @@ Dialog CDSales;
                         // Reinitialize the adapter if it is null
                         ArrayList<SalesArrayClass> zzz = salesarray;
                         salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
-                        ListView SalesLV = findViewById(R.id.SalesLV);
+                         SalesLV = findViewById(R.id.SalesLV);
                         SalesLV.setAdapter(salesadapter);
                     }
 
@@ -238,6 +238,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                         clearSalesListView();
+                         createPDF();
                         salesadapter.notifyDataSetChanged();
                     }
                 });
@@ -247,7 +248,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                      // createPDF();
+
 
                     }
                 });
@@ -345,12 +346,23 @@ Dialog CDSales;
         salesarray.clear();
 
         autoCompleteTextView.setText("");
-        productsalesET.getText().clear();
-        quantitysoldET.getText().clear();
-        pricesoldET.getText().clear();
-        totalsoldET.getText().clear();
+        if (productsalesET != null) {
+            productsalesET.getText().clear();
+        }
 
+        if (quantitysoldET != null) {
+            quantitysoldET.getText().clear();
+        }
+
+        if (pricesoldET != null) {
+            pricesoldET.getText().clear();
+        }
+
+        if (totalsoldET != null) {
+            totalsoldET.getText().clear();
+        }
     }
+
     private void updateTotalPrice() {
         int sum = 0;
 
