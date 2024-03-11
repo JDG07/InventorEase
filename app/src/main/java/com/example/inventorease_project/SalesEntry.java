@@ -388,6 +388,10 @@ Dialog CDSales;
     private void askPermissions (){
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
     }
+
+    private void inputDATA (){
+
+    }
     private void createPDF(){
         PdfDocument document = new PdfDocument();
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(1080,1920,1).create();
