@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="380dp"
-    android:layout_height="650dp"
+    android:id="@+id/SLL"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/white">
 
@@ -16,47 +17,38 @@
         android:layout_marginBottom="524dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
         app:srcCompat="@drawable/inventorease13" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="336dp"
         android:layout_height="161dp"
-        android:layout_marginBottom="524dp"
         android:src="@drawable/name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="232dp"
-        android:layout_height="34dp"
-        android:fontFamily="@font/bebas_neue"
-        android:text="1234 Mango Street Barangay Bagong Pag-asa Quezon City, Metro Manila 1105 Philippines |  +63 912 345 6789 |  john.doe@inventorease.com"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="381dp"
-        android:layout_height="9dp"
+        android:layout_width="412dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="291dp"
+        android:layout_marginBottom="112dp"
         android:foreground="#7743DB"
         android:foregroundTint="#7743DB"
         android:text="______________________________________________________________"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView4"
@@ -68,23 +60,23 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="380dp"
-        android:layout_height="58dp"
+        android:layout_width="423dp"
+        android:layout_height="64dp"
         android:foreground="#7743DB"
         android:text="______________________________________________________________"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.374" />
 
     <TextView
         android:id="@+id/textView7"
@@ -149,8 +141,8 @@
 
     <TextView
         android:id="@+id/pnameR"
-        android:layout_width="103dp"
-        android:layout_height="24dp"
+        android:layout_width="112dp"
+        android:layout_height="64dp"
         android:layout_marginTop="11dp"
         android:layout_marginBottom="296dp"
         android:fontFamily="@font/bebas_neue"
@@ -159,16 +151,16 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.051"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/quantR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="59dp"
+        android:layout_height="59dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="292dp"
         android:fontFamily="@font/bebas_neue"
@@ -185,8 +177,8 @@
 
     <TextView
         android:id="@+id/priceR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="62dp"
+        android:layout_height="63dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="292dp"
         android:fontFamily="@font/bebas_neue"
@@ -203,8 +195,8 @@
 
     <TextView
         android:id="@+id/subtR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="62dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="292dp"
         android:fontFamily="@font/bebas_neue"
@@ -213,23 +205,24 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewline"
-        android:layout_width="382dp"
-        android:layout_height="11dp"
+        android:layout_width="415dp"
+        android:layout_height="12dp"
+        android:layout_marginBottom="124dp"
         android:foreground="#7743DB"
         android:text="______________________________________________________________"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.877" />
 
     <TextView
         android:id="@+id/textView16"
@@ -244,9 +237,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintHorizontal_bias="0.674"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewline" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewline"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView17"
@@ -260,10 +254,11 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintHorizontal_bias="0.655"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewline" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewline"
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/textView19"
@@ -280,7 +275,8 @@
         app:layout_constraintHorizontal_bias="0.67"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.342" />
 
     <TextView
         android:id="@+id/totalR"
@@ -295,15 +291,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewline"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.494" />
 
     <TextView
         android:id="@+id/shippingR"
-        android:layout_width="61dp"
-        android:layout_height="20dp"
+        android:layout_width="62dp"
+        android:layout_height="38dp"
         android:layout_marginTop="31dp"
         android:layout_marginBottom="116dp"
         android:fontFamily="@font/bebas_neue"
@@ -312,11 +308,11 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintHorizontal_bias="0.908"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewline"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/subtotalR"
@@ -331,9 +327,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewline" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewline"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView18"
@@ -344,68 +341,82 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655" />
+        app:layout_constraintVertical_bias="0.357" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="225dp"
+        android:layout_height="54dp"
+        android:fontFamily="@font/bebas_neue"
+        android:text="1234 Mango Street Barangay Bagong Pag-asa Quezon City, Metro Manila 1105 Philippines |  +63 912 345 6789 |  john.doe@inventorease.com"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
 
     <TextView
         android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_width="98dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="52dp"
         android:fontFamily="@font/bebas_neue"
         android:text="RECEIPT NUMBER:"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="9dp"
         android:fontFamily="@font/bebas_neue"
         android:text="RECEIPT DATE:"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/numR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="33dp"
         android:layout_marginTop="11dp"
-        android:layout_marginBottom="76dp"
         android:fontFamily="@font/bebas_neue"
         android:text="TextView"
         android:textColor="#8EACCD"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toBottomOf="@+id/dateR"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.631"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/dateR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_width="174dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/bebas_neue"
         android:text="date"
         android:textColor="#8EACCD"
+
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.692" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
