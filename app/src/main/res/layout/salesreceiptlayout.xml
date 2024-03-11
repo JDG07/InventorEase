@@ -279,7 +279,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/prodnameTV"
+            android:id="@+id/receiptProdNameTV"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
@@ -290,7 +290,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/quanTV"
+            android:id="@+id/receiptQtyTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -301,7 +301,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/priceTV"
+            android:id="@+id/receiptPriceTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -312,7 +312,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/totalTV"
+            android:id="@+id/receiptTotalTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -325,6 +325,7 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/receiptLV"
         android:layout_width="422dp"
         android:layout_height="359dp"
         android:layout_marginTop="320dp"

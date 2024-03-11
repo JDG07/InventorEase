@@ -1,6 +1,5 @@
 package com.example.inventorease_project;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -43,7 +41,7 @@ public class ProductListAdapter extends ArrayAdapter<ProductList> {
         TextView prodTV = convertView.findViewById(R.id.prodTV);
         TextView quantityTV = convertView.findViewById(R.id.quantityTV);
         TextView costTV = convertView.findViewById(R.id.costTV);
-        TextView priceTV = convertView.findViewById(R.id.priceTV);
+        TextView priceTV = convertView.findViewById(R.id.receiptPriceTV);
 
 
         prodTV.setText(pname);

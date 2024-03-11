@@ -65,6 +65,8 @@ Dialog CDSales;
     private ArrayList<ProductList> products;
     private SalesListAdapter salesListAdapter;
     public ListView SalesLV;
+
+    public TextView receiptProdnameTV, receiptQtyTV, receiptPriceTV,receiptTotalTV;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +76,6 @@ Dialog CDSales;
         askPermissions();
 
         CDSales = new Dialog(this);
-
-
 
 
 
@@ -108,7 +108,6 @@ Dialog CDSales;
             builder.setNegativeButton("No", (dialog, which) -> {
 
             });
-
             builder.show();
 
         });
@@ -140,7 +139,6 @@ Dialog CDSales;
                 totalsoldET = CDSales.findViewById(R.id.totalsoldET);
                 pricesoldET = CDSales.findViewById(R.id.pricesoldET);
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
-
 
 
                 backsales= CDSales.findViewById(R.id.backsales);
@@ -242,7 +240,7 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                      // createPDF();
+                       createPDF();
 
                     }
                 });
@@ -276,9 +274,7 @@ Dialog CDSales;
                         }
                     }
                 });
-
                 CDSales.show();
-
             });
     }
     public void addSales(){
@@ -288,7 +284,6 @@ Dialog CDSales;
         String totsales = totalsoldET.getText().toString();
 
         if (productsalesET == null || quantitysoldET == null || pricesoldET == null || totalsoldET == null) {
-
             return;
         }
 
@@ -313,8 +308,6 @@ Dialog CDSales;
             Log.e("Error", "Selected position is out of bounds");
         }
 
-
-
         SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
         salesarray.add(salesEntry);
         updateTotalPrice();
@@ -327,8 +320,6 @@ Dialog CDSales;
 
         CDSales.dismiss();
         autoCompleteTextView.setText("");
-
-
 
         Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
 
