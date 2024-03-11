@@ -43,7 +43,10 @@ import java.util.ArrayList;
 
 
 public class SalesEntry extends AppCompatActivity {
-Dialog CDSales;
+Dialog CDSales,CDReceipt;
+
+ConstraintLayout SLL;
+
     public  EditText productsalesET;
     public  EditText quantitysoldET;
     public  EditText totalsoldET;
@@ -75,6 +78,7 @@ Dialog CDSales;
         askPermissions();
 
         CDSales = new Dialog(this);
+        CDReceipt = new Dialog(this);
 
 
 
@@ -224,7 +228,7 @@ Dialog CDSales;
                     }
                 });
 
-                ListView SalesLV = (ListView) findViewById(R.id.SalesLV);
+                ListView SalesLV = findViewById(R.id.SalesLV);
                 ArrayList<SalesArrayClass> zzz = salesarray;
                 SalesListAdapter salesadapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, zzz);
                 SalesLV.setAdapter(salesadapter);
@@ -237,10 +241,13 @@ Dialog CDSales;
                 checkoutbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         clearSalesListView();
-                         createPDF();
+                        createPDF();
+                        showReceipt ();
                         salesadapter.notifyDataSetChanged();
                     }
+
                 });
 
 
@@ -248,7 +255,6 @@ Dialog CDSales;
                     @Override
                     public void onClick(View v) {
                        addSales();
-
 
                     }
                 });
@@ -433,6 +439,7 @@ Dialog CDSales;
         // creating PDF
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         String filename = "gumanapls.pdf";
+
         File file = new File(downloadsDir,filename);
         try {
             FileOutputStream fos = new FileOutputStream(file);
@@ -448,6 +455,10 @@ Dialog CDSales;
         }
 
     }
-
+private void showReceipt (){
+    //Linear SLL = findViewById(R.id.SLL);
+    CDReceipt.setContentView(R.layout.salesreceiptlayout);
+    CDReceipt.show();
+}
 
 }
