@@ -32,7 +32,6 @@ public class StatisticsView extends AppCompatActivity {
 
         ArrayList<ProductList> productList = AddItemViews.productList;
 
-
         int productCount = productList.size();
 
 
@@ -40,11 +39,14 @@ public class StatisticsView extends AppCompatActivity {
         int inventoryCost = 0;
 
         for (ProductList product : productList) {
-            inventoryValue += product.getPrice();
-            inventoryCost += product.getCost();
+            int quantity = product.getQuantity();
+            int costPerItem = product.getCost();
+            int pricePerItem = product.getPrice();
+
+            inventoryValue += (quantity * pricePerItem);
+            inventoryCost += (quantity * costPerItem);
         }
 
-        // Update the TextViews
         productCountTextView.setText("Number of Products: " + productCount);
         inventoryValueTextView.setText("Current Inventory Value: " + inventoryValue);
         inventoryCostTextView.setText("Current Inventory Cost: " + inventoryCost);
