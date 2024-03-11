@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
+        statisticsbutton.setOnClickListener(view->{
+            Intent c = new Intent(MainActivity.this,StatisticsView.class);
+            startActivity(c);
+            finish();
+        });
+
 
     }
 }

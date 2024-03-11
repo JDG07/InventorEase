@@ -94,7 +94,6 @@ Dialog CDSales;
                     if (salesListAdapter != null) {
                         salesListAdapter.notifyDataSetChanged();
                     } else {
-                        // Reinitialize the adapter if it is null
                         ArrayList<SalesArrayClass> zzz = salesarray;
                         salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
                         ListView SalesLV = findViewById(R.id.SalesLV);
@@ -107,7 +106,7 @@ Dialog CDSales;
                 });
 
                 builder.setNegativeButton("No", (dialog, which) -> {
-                    // Handle 'No' button click
+
                 });
 
                 builder.show();
