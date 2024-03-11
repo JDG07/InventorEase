@@ -9,19 +9,34 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/SLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/SLL"
-        android:background="@drawable/receiptbackground"
-        android:orientation="vertical" >
+        android:background="@drawable/_receiptbackground"
+        android:orientation="vertical">
 
+
+
+        <TextView
+            android:id="@+id/rannum"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="RANDOM NUMBER"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="220dp"
+            android:layout_gravity="left"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="#7743DB"
+            android:textSize="20sp"
+            android:gravity="left|center"
+           />
 
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/plisttxtvlayout"
             android:orientation="horizontal">
 
@@ -29,7 +44,7 @@
                 android:id="@+id/receiptProdNameTV"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:fontFamily="@font/bebas_neue"
                 android:gravity="center"
                 android:text="Product Name"
@@ -74,7 +89,23 @@
         <ListView
             android:id="@+id/salesAV"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="427dp" >
+
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/totalpTV"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:text="TextView"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="9dp"
+            android:layout_gravity="left"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="#7743DB"
+            android:textSize="20sp"
+            android:gravity="left|center"/>
 
 
     </LinearLayout>
