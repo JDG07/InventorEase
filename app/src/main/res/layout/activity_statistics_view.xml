@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.547" />
 
     <Button
-        android:id="@+id/backbtn"
+        android:id="@+id/backbtnS"
         android:layout_width="56dp"
         android:layout_height="62dp"
         android:background="@drawable/backarrow"

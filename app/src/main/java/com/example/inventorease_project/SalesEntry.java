@@ -450,7 +450,7 @@ ConstraintLayout SLL;
 
         // creating PDF
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String filename = "gumanapls.pdf";
+        String filename = "InventorEaseReceipt.pdf";
 
         File file = new File(downloadsDir,filename);
         try {

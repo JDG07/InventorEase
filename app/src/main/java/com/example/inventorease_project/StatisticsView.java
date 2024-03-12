@@ -14,7 +14,7 @@ public class StatisticsView extends AppCompatActivity {
     private TextView inventoryValueTextView;
     private TextView inventoryCostTextView;
 
-    private Button showgraphBTN, backbtn;
+    private Button showgraphBTN, backbtnS;
 
 
 
@@ -27,9 +27,14 @@ public class StatisticsView extends AppCompatActivity {
         inventoryValueTextView = findViewById(R.id.inventoryValueTextView);
         inventoryCostTextView = findViewById(R.id.inventoryCostTextView);
         showgraphBTN = findViewById(R.id.showgraphBTN);
-        backbtn = findViewById(R.id.backbtn);
+        backbtnS = findViewById(R.id.backbtnS);
 
         updateStatistics();
+
+        backbtnS.setOnClickListener(v -> {
+            Intent intent = new Intent(StatisticsView.this, MainActivity.class);
+            startActivity(intent);
+        });
 
         showgraphBTN.setOnClickListener(v -> {
             Intent intent = new Intent(StatisticsView.this, Chart.class);
@@ -37,6 +42,8 @@ public class StatisticsView extends AppCompatActivity {
         });
 
     }
+
+
     private void updateStatistics() {
 
         ArrayList<ProductList> productList = AddItemViews.productList;
@@ -60,4 +67,6 @@ public class StatisticsView extends AppCompatActivity {
         inventoryValueTextView.setText("Current Inventory Value: " + inventoryValue);
         inventoryCostTextView.setText("Current Inventory Cost: " + inventoryCost);
     }
+
+
 }
