@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,13 +45,6 @@ public class AddStocksView extends AppCompatActivity {
             startActivity(intent);
             Toast.makeText(this, "Going Back", Toast.LENGTH_SHORT).show();
         });
-
-        final int quanmaxDigits = 4;
-
-        InputFilter[] filters3 = new InputFilter[1];
-        filters3[0] = new InputFilter.LengthFilter(quanmaxDigits);
-
-        autoquanET.setFilters(filters3);
 
 
 

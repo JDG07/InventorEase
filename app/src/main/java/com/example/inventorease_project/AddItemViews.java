@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,27 +45,6 @@ public class AddItemViews extends AppCompatActivity {
          ImageButton backitem= findViewById(R.id.backitem);
          plistb = findViewById(R.id.plistb);
 
-        final int maxCharacters = 25; // Define  maximum characters
-
-        InputFilter[] filters = new InputFilter[1];
-        filters[0] = new InputFilter.LengthFilter(maxCharacters);
-        prodET.setFilters(filters);
-        /////////////////////////////
-        EditText costET = findViewById(R.id.costET);
-        final int maxDigits = 6;
-        /////////////////////////////
-        InputFilter[] filters2 = new InputFilter[1];
-        filters2[0] = new InputFilter.LengthFilter(maxDigits);
-        //////////////////////////////////
-        costET.setFilters(filters2);
-        priceET.setFilters(filters2);
-        ///////////////////////////////////
-        final int quanmaxDigits = 4;
-
-        InputFilter[] filters3 = new InputFilter[1];
-        filters3[0] = new InputFilter.LengthFilter(quanmaxDigits);
-
-        quantityET.setFilters(filters3);
 
 
         backitem.setOnClickListener(view ->{
