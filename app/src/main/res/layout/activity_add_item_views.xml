@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundadditem"
+    android:background="@drawable/_backgroundadditem"
     tools:context=".AddItemViews">
 
     <EditText
         android:id="@+id/prodET"
         android:layout_width="270dp"
         android:layout_height="68dp"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@color/design_default_color_primary"
+        android:background="@drawable/actvsalesentrylayout"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
         android:hint="Enter Product Name"
@@ -24,16 +23,16 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.227" />
 
     <EditText
         android:id="@+id/quantityET"
         android:layout_width="270dp"
         android:layout_height="68dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/actvsalesentrylayout"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
         android:hint="Quantity"
@@ -54,7 +53,7 @@
         android:id="@+id/costET"
         android:layout_width="270dp"
         android:layout_height="68dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/actvsalesentrylayout"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
         android:hint="Cost"
@@ -75,7 +74,7 @@
         android:id="@+id/priceET"
         android:layout_width="270dp"
         android:layout_height="68dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/actvsalesentrylayout"
         android:ems="10"
         android:fontFamily="@font/bebas_neue"
         android:hint="Price"

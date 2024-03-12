@@ -15,6 +15,13 @@
         android:background="@drawable/_receiptbackground"
         android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/dismissR"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:background="@drawable/xbreceipt"
+            android:layout_marginStart="350dp"/>
+
 
 
         <TextView
@@ -23,7 +30,7 @@
             android:layout_height="50dp"
             android:text="RANDOM NUMBER"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="170dp"
             android:layout_gravity="left"
             android:fontFamily="@font/bebas_neue"
             android:textColor="#7743DB"
@@ -80,9 +87,9 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bebas_neue"
                 android:gravity="center"
-                android:text="Total"
+                android:text="Amount"
                 android:textColor="#7743DB"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -100,7 +107,7 @@
             android:layout_height="48dp"
             android:text="TextView"
             android:layout_marginStart="230dp"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="27dp"
             android:layout_gravity="left"
             android:fontFamily="@font/bebas_neue"
             android:textColor="#7743DB"

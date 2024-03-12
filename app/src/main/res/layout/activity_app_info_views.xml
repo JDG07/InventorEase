@@ -48,13 +48,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.355">
-
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
         <EditText
             android:id="@+id/prodinfoET"
             android:layout_width="wrap_content"
             android:layout_height="71dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/prodinfotxtborder"
@@ -72,13 +82,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
         <EditText
             android:id="@+id/quaninfoET"
             android:layout_width="wrap_content"
             android:layout_height="71dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/prodinfotxtborder"
@@ -97,13 +117,23 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/prodinfoET" />
-
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cost"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
         <EditText
             android:id="@+id/costinfoET"
             android:layout_width="wrap_content"
             android:layout_height="71dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/prodinfotxtborder"
@@ -122,14 +152,24 @@
             app:layout_constraintHorizontal_bias="0.009"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quaninfoET" />
-
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/priceinfoET"
             android:layout_width="wrap_content"
             android:layout_height="71dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/prodinfotxtborder"
@@ -148,6 +188,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/costinfoET" />
+
+
 
     </LinearLayout>
 
