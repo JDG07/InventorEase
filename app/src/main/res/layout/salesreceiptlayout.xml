@@ -16,28 +16,25 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/dismissR"
+            android:id="@+id/receiptdismissbtn"
             android:layout_width="45dp"
             android:layout_height="50dp"
             android:background="@drawable/xbreceipt"
-            android:layout_marginStart="350dp"/>
-
+            android:layout_marginStart="340dp"/>
 
 
         <TextView
             android:id="@+id/rannum"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:text="RANDOM NUMBER"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="170dp"
             android:layout_gravity="left"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="125dp"
             android:fontFamily="@font/bebas_neue"
-            android:textColor="#7743DB"
-            android:textSize="20sp"
             android:gravity="left|center"
-           />
-
+            android:text="RANDOM NUMBER"
+            android:textColor="#7743DB"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -96,7 +93,7 @@
         <ListView
             android:id="@+id/receiptLV"
             android:layout_width="match_parent"
-            android:layout_height="427dp">
+            android:layout_height="337dp">
 
 
         </ListView>
@@ -105,14 +102,14 @@
             android:id="@+id/totalpTV"
             android:layout_width="160dp"
             android:layout_height="48dp"
-            android:text="TextView"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="27dp"
             android:layout_gravity="left"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="1dp"
             android:fontFamily="@font/bebas_neue"
+            android:gravity="left|center"
+            android:text="TextView"
             android:textColor="#7743DB"
-            android:textSize="20sp"
-            android:gravity="left|center"/>
+            android:textSize="20sp" />
 
 
     </LinearLayout>

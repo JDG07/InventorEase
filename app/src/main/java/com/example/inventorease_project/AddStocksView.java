@@ -55,8 +55,6 @@ public class AddStocksView extends AppCompatActivity {
         autoquanET.setFilters(filters3);
 
 
-
-
         for (ProductList product : prodstocks) {
             prodstocksNames.add(product.getPname());
         }

@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.pdf.PdfDocument;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +43,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class SalesEntry extends AppCompatActivity {
@@ -53,13 +56,11 @@ ConstraintLayout SLL;
     public  EditText totalsoldET;
     public  EditText pricesoldET;
     public  EditText remainingstockET;
-
     public  Button addsales,backsales,checkoutbtn;
-
     public  TextView totalpriceTV;
 
-    public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
+    public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
     public  AutoCompleteTextView autoCompleteTextView;
 
@@ -69,6 +70,7 @@ ConstraintLayout SLL;
 
     public ListView SalesLV;
     public ListView ReceiptLV;
+    public ImageButton receiptdismissbtn;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ ConstraintLayout SLL;
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sales_entry);
         askPermissions();
+
+
 
         CDSales = new Dialog(this);
         CDReceipt = new Dialog(this);
@@ -114,7 +118,6 @@ ConstraintLayout SLL;
                 });
 
                 builder.setNegativeButton("No", (dialog, which) -> {
-                    // Handle 'No' button click
                 });
 
                 builder.show();
@@ -131,6 +134,13 @@ ConstraintLayout SLL;
 
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
 
+        final int maxCharacters = 25;
+
+        InputFilter[] filters = new InputFilter[1];
+        filters[0] = new InputFilter.LengthFilter(maxCharacters);
+        autoCompleteTextView.setFilters(filters);
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.salesentryactvlayout,R.id.salesACTV ,searchproduct);
         autoCompleteTextView.setThreshold(1);
         autoCompleteTextView.setAdapter(adapter);
@@ -142,6 +152,7 @@ ConstraintLayout SLL;
                 LinearLayout custompopupL = findViewById(R.id.custompopupL);
                 CDSales.setContentView(R.layout.custompopupsales);
                 CDReceipt.setContentView(R.layout.salesreceiptlayout);
+
 
                 productsalesET = CDSales.findViewById(R.id.productsalesET);
                 quantitysoldET = CDSales.findViewById(R.id.quantitysoldET);
@@ -155,6 +166,7 @@ ConstraintLayout SLL;
                 InputFilter[] filtersPriceInfo = new InputFilter[1];
                 filtersPriceInfo[0] = new InputFilter.LengthFilter(maxDigitsQuantityDialog);
                 quantitysoldET.setFilters(filtersPriceInfo);
+
 
 
 
@@ -186,8 +198,6 @@ ConstraintLayout SLL;
 
                     int remainingstockget = searchedProduct.getQuantity();
                     remainingstockET.setText(String.valueOf(remainingstockget));
-
-
 
                     quantitysoldET.addTextChangedListener(new TextWatcher() {
                         @Override
@@ -255,7 +265,9 @@ ConstraintLayout SLL;
                         salesListAdapter.notifyDataSetChanged();
                         createPDF();
                         showReceipt ();
-                  //      clearSalesListView();
+                        setRandomNumber();
+                        setReceiptdismissbtn();
+                        // clearSalesListView();
 
                     }
 
@@ -467,6 +479,19 @@ ConstraintLayout SLL;
         }
 
     }
+    private long generateRandom12DigitNumber() {
+        // Generate a random number between 10^11 and (10^12 - 1)
+        Random random = new Random();
+        long randomValue = (long) (Math.pow(10, 11) + random.nextDouble() * Math.pow(10, 11));
+        return Math.min(randomValue, 999999999999L); // Ensure it's a 12-digit number
+    }
+    private void setRandomNumber() {
+        TextView rannum = CDReceipt.findViewById(R.id.rannum);
+        if (rannum != null) {
+            long random12DigitNumber = generateRandom12DigitNumber();
+            rannum.setText(String.valueOf(random12DigitNumber));
+        }
+    }
 private void showReceipt (){
     //Linear SLL = findViewById(R.id.SLL);
     CDReceipt.setContentView(R.layout.salesreceiptlayout);
@@ -474,6 +499,19 @@ private void showReceipt (){
     ReceiptLV.setAdapter(salesListAdapter);
     salesListAdapter.notifyDataSetChanged();
     CDReceipt.show();
+}
+private void setReceiptdismissbtn(){
+
+    ImageButton dismiss = CDReceipt.findViewById(R.id.receiptdismissbtn);
+    dismiss.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CDReceipt.setContentView(R.layout.salesreceiptlayout);
+            CDReceipt.dismiss();
+            Intent intent = new Intent(CDReceipt.getContext(),MainActivity.class);
+            startActivity(intent);
+        }
+    });
 }
 
 }
