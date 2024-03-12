@@ -4,9 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 public class ProductInfoViews extends AppCompatActivity {
     AlertDialog.Builder builderedit;
     public static EditText prodinfo, quaninfo, costinfo,priceinfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,46 @@ public class ProductInfoViews extends AppCompatActivity {
         int cost = intent.getIntExtra("cost",0);
         int price = intent.getIntExtra("price",0);
 
+        int originalQuantity = intent.getIntExtra("quantity", 0);
+
         prodinfo.setText(productName);
         quaninfo.setText(String.valueOf(quantity));
         costinfo.setText(String.valueOf(cost));
         priceinfo.setText(String.valueOf(price));
+
+        quaninfo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    showQuantityEditDialog(originalQuantity);
+                }
+            }
+        });
+        quaninfo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
+                // No action needed before text changes
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                // No action needed during text changes
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Check if the entered quantity is greater than the original quantity
+                String editedQuantityStr = editable.toString().trim();
+                if (!editedQuantityStr.isEmpty()) {
+                    int editedQuantity = Integer.parseInt(editedQuantityStr);
+
+                    if (editedQuantity > originalQuantity) {
+                        quaninfo.setError("Quantity should not exceed the original quantity");
+                        quaninfo.setText(String.valueOf(originalQuantity));
+                    }
+                }
+            }
+        });
 
         editBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +114,8 @@ public class ProductInfoViews extends AppCompatActivity {
         deleteBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteProduct(productName);
+                showDeleteConfirmationDialog(productName);
+
             }
         });
 
@@ -108,11 +149,9 @@ public class ProductInfoViews extends AppCompatActivity {
                     product.setQuantity(editedQuantity);
                     product.setCost(editedCost);
                     product.setPrice(editedPrice);
-
                     break;
                 }
             }
-
             ProductListViews.adapter.notifyDataSetChanged();
             finish();
         } else {
@@ -135,7 +174,6 @@ public class ProductInfoViews extends AppCompatActivity {
             if(product.getPname().equals(productNameToDelete)){
 
                 AddItemViews.productList.remove(i);
-
                 ProductListViews.adapter.notifyDataSetChanged();
                 finish();
                 return;
@@ -145,7 +183,6 @@ public class ProductInfoViews extends AppCompatActivity {
 
 
     private void showEditDialog() {
-
         ConstraintLayout EditAD = findViewById(R.id.EditAD);
 
         builderedit = new AlertDialog.Builder(ProductInfoViews.this);
@@ -153,7 +190,6 @@ public class ProductInfoViews extends AppCompatActivity {
 
         Button EditYes = view.findViewById(R.id.EditYes);
         Button EditNo = view.findViewById(R.id.EditNo);
-
 
         builderedit.setView(view);
         final AlertDialog alertDialog = builderedit.create();
@@ -165,9 +201,7 @@ public class ProductInfoViews extends AppCompatActivity {
                 Toast.makeText(ProductInfoViews.this,"Testing",Toast.LENGTH_SHORT).show();
             }
         });
-
         EditYes.findViewById(R.id.EditYes).setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Toast.makeText(ProductInfoViews.this,"Testing Yes",Toast.LENGTH_SHORT).show();
@@ -176,22 +210,52 @@ public class ProductInfoViews extends AppCompatActivity {
                 costinfo.setEnabled(true);
                 priceinfo.setEnabled(true);
                 alertDialog.dismiss();
-            };
+            }
         });
 
         if (alertDialog.getWindow()!=null){
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-
         }
         alertDialog.show();
     }
-    private boolean validateFields() {
-        // Check if any of the fields is empty
-        return !prodinfo.getText().toString().trim().isEmpty() &&
-                !quaninfo.getText().toString().trim().isEmpty() &&
-                !costinfo.getText().toString().trim().isEmpty() &&
-                !priceinfo.getText().toString().trim().isEmpty();
+
+    private void showQuantityEditDialog(final int originalQuantity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Edit Quantity");
+        builder.setMessage("Are you sure you want to edit the quantity?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User is sure, allow editing
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User canceled, reset quantity to the original value
+                quaninfo.setText(String.valueOf(originalQuantity));
+                quaninfo.clearFocus();
+            }
+        });
+        builder.show();
     }
-
-
+    private void showDeleteConfirmationDialog(final String productNameToDelete) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Product");
+        builder.setMessage("Are you sure you want to delete this product?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User confirmed, proceed with deletion
+                deleteProduct(productNameToDelete);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // User canceled, do nothing
+            }
+        });
+        builder.show();
+    }
 }
