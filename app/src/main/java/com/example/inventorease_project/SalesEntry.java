@@ -1,7 +1,5 @@
 package com.example.inventorease_project;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,11 +10,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.pdf.PdfDocument;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,7 +21,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -267,6 +260,8 @@ ConstraintLayout SLL;
                         showReceipt ();
                         setRandomNumber();
                         setReceiptdismissbtn();
+                        updateTotalPriceViews();
+                  //      updateReceiptTotal();
                         // clearSalesListView();
 
                     }
@@ -394,7 +389,36 @@ ConstraintLayout SLL;
         }
     }
 
-    private void updateTotalPrice() {
+//    private void updateTotalPrice() {
+//        int sum = 0;
+//
+//        for (SalesArrayClass entry : salesarray) {
+//            try {
+//                int total = Integer.parseInt(entry.getSalestotal());
+//                sum += total;
+//            } catch (NumberFormatException e) {
+//
+//                Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
+//            }
+//        }
+//
+//        totalpriceTV.setText(String.valueOf(sum));
+//    }
+private void setReceiptdismissbtn(){
+
+    ImageButton dismiss = CDReceipt.findViewById(R.id.receiptdismissbtn);
+    dismiss.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CDReceipt.setContentView(R.layout.salesreceiptlayout);
+            CDReceipt.dismiss();
+            Intent intent = new Intent(CDReceipt.getContext(),MainActivity.class);
+            startActivity(intent);
+
+        }
+    });
+}
+    private void updateReceiptTotal() {
         int sum = 0;
 
         for (SalesArrayClass entry : salesarray) {
@@ -406,8 +430,8 @@ ConstraintLayout SLL;
                 Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
             }
         }
-
-        totalpriceTV.setText(String.valueOf(sum));
+        TextView receiptTotal = CDReceipt.findViewById(R.id.receipttotalTV);
+        receiptTotal.setText(String.valueOf(sum));
     }
     private void updateQuantityInProductList() {
         for (SalesArrayClass entry : salesarray) {
@@ -498,20 +522,44 @@ private void showReceipt (){
     ListView ReceiptLV = CDReceipt.findViewById(R.id.receiptLV);
     ReceiptLV.setAdapter(salesListAdapter);
     salesListAdapter.notifyDataSetChanged();
+
+    updateTotalPriceViews();
     CDReceipt.show();
-}
-private void setReceiptdismissbtn(){
 
-    ImageButton dismiss = CDReceipt.findViewById(R.id.receiptdismissbtn);
-    dismiss.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            CDReceipt.setContentView(R.layout.salesreceiptlayout);
-            CDReceipt.dismiss();
-            Intent intent = new Intent(CDReceipt.getContext(),MainActivity.class);
-            startActivity(intent);
+}
+    private void updateTotalPriceViews() {
+        totalpriceTV = findViewById(R.id.totalpriceTV);
+        TextView totalreceiptTV = CDReceipt.findViewById(R.id.receipttotalTV);
+
+        int sum = calculateTotalPrice();
+
+        if (totalpriceTV != null) {
+            totalpriceTV.setText(String.valueOf(sum));
         }
-    });
-}
+
+        if (totalreceiptTV != null) {
+            totalreceiptTV.setText(sum);
+        }
+    }
+    private void updateTotalPrice() {
+        int sum = calculateTotalPrice();
+        totalpriceTV.setText(String.valueOf(sum));
+        updateTotalPriceViews();
+    }
+    private int calculateTotalPrice() {
+        int sum = 0;
+
+        for (SalesArrayClass entry : salesarray) {
+            try {
+                int total = Integer.parseInt(entry.getSalestotal());
+                sum += total;
+            } catch (NumberFormatException e) {
+                Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
+            }
+        }
+
+        return sum;
+    }
 
 }
+

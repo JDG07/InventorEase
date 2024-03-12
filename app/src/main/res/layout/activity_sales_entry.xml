@@ -71,7 +71,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/receiptTotalTV"
+            android:id="@+id/receiptamountTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

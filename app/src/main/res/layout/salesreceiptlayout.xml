@@ -78,7 +78,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/receiptTotalTV"
+                android:id="@+id/receiptamountTV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -99,7 +99,7 @@
         </ListView>
 
         <TextView
-            android:id="@+id/totalpTV"
+            android:id="@+id/receipttotalTV"
             android:layout_width="160dp"
             android:layout_height="48dp"
             android:layout_gravity="left"
