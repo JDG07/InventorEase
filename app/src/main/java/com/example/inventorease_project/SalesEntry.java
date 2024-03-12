@@ -59,8 +59,6 @@ ConstraintLayout SLL;
 
     public static ArrayList <SalesArrayClass> salesarray = new ArrayList<>();
 
-    public  ProductListAdapter salesadapter;
-
 
     public  AutoCompleteTextView autoCompleteTextView;
 
@@ -69,6 +67,7 @@ ConstraintLayout SLL;
     private SalesListAdapter salesListAdapter;
 
     public ListView SalesLV;
+    public ListView ReceiptLV;
     final static int REQUEST_CODE = 1122;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +78,7 @@ ConstraintLayout SLL;
 
         CDSales = new Dialog(this);
         CDReceipt = new Dialog(this);
+        salesListAdapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, salesarray);
 
 
 
@@ -102,7 +102,10 @@ ConstraintLayout SLL;
                         ArrayList<SalesArrayClass> zzz = salesarray;
                         salesListAdapter = new SalesListAdapter(SalesEntry.this, R.layout.saleslistviewlayout, zzz);
                          SalesLV = findViewById(R.id.SalesLV);
-                        SalesLV.setAdapter(salesadapter);
+                        SalesLV.setAdapter(salesListAdapter);
+
+                        ReceiptLV = findViewById(R.id.receiptLV);
+                        ReceiptLV.setAdapter(salesListAdapter);
                     }
 
                     Intent intent = new Intent(SalesEntry.this, MainActivity.class);
@@ -138,13 +141,13 @@ ConstraintLayout SLL;
 
                 LinearLayout custompopupL = findViewById(R.id.custompopupL);
                 CDSales.setContentView(R.layout.custompopupsales);
+                CDReceipt.setContentView(R.layout.salesreceiptlayout);
 
                 productsalesET = CDSales.findViewById(R.id.productsalesET);
                 quantitysoldET = CDSales.findViewById(R.id.quantitysoldET);
                 totalsoldET = CDSales.findViewById(R.id.totalsoldET);
                 pricesoldET = CDSales.findViewById(R.id.pricesoldET);
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
-
 
 
                 backsales= CDSales.findViewById(R.id.backsales);
@@ -226,11 +229,13 @@ ConstraintLayout SLL;
                     }
                 });
 
-                ListView SalesLV = findViewById(R.id.SalesLV);
-                ArrayList<SalesArrayClass> zzz = salesarray;
-                SalesListAdapter salesadapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, zzz);
-                SalesLV.setAdapter(salesadapter);
 
+                SalesLV = findViewById(R.id.SalesLV);
+
+                SalesLV.setAdapter(salesListAdapter);
+
+                ReceiptLV = CDReceipt.findViewById(R.id.receiptLV);
+                ReceiptLV.setAdapter(salesListAdapter);
 
 
                  totalpriceTV = findViewById(R.id.totalpriceTV);
@@ -239,11 +244,11 @@ ConstraintLayout SLL;
                 checkoutbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        clearSalesListView();
+                        salesListAdapter.notifyDataSetChanged();
                         createPDF();
                         showReceipt ();
-                        salesadapter.notifyDataSetChanged();
+                  //      clearSalesListView();
+
                     }
 
                 });
@@ -253,7 +258,7 @@ ConstraintLayout SLL;
                     @Override
                     public void onClick(View v) {
                        addSales();
-                       salesadapter.notifyDataSetChanged();
+                       salesListAdapter.notifyDataSetChanged();
 
                     }
                 });
@@ -456,6 +461,9 @@ ConstraintLayout SLL;
 private void showReceipt (){
     //Linear SLL = findViewById(R.id.SLL);
     CDReceipt.setContentView(R.layout.salesreceiptlayout);
+    ListView ReceiptLV = CDReceipt.findViewById(R.id.receiptLV);
+    ReceiptLV.setAdapter(salesListAdapter);
+    salesListAdapter.notifyDataSetChanged();
     CDReceipt.show();
 }
 

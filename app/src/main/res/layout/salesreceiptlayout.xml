@@ -87,9 +87,9 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/salesAV"
+            android:id="@+id/receiptLV"
             android:layout_width="match_parent"
-            android:layout_height="427dp" >
+            android:layout_height="427dp">
 
 
         </ListView>
