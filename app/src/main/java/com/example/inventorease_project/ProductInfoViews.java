@@ -52,7 +52,6 @@ public class ProductInfoViews extends AppCompatActivity {
         int cost = intent.getIntExtra("cost",0);
         int price = intent.getIntExtra("price",0);
 
-
         prodinfo.setText(productName);
         quaninfo.setText(String.valueOf(quantity));
         costinfo.setText(String.valueOf(cost));
@@ -86,52 +85,62 @@ public class ProductInfoViews extends AppCompatActivity {
         });
 
     }
-    private void saveChanges(String originalProductName){
+    private void saveChanges(String originalProductName) {
         // Retrieve edited values from EditText fields
-        String editedProductName = prodinfo.getText().toString();
-        int editedQuantity = Integer.parseInt(quaninfo.getText().toString());
-        int editedCost = Integer.parseInt(costinfo.getText().toString());
-        int editedPrice = Integer.parseInt(priceinfo.getText().toString());
+        String editedProductName = prodinfo.getText().toString().trim();
+        String editedQuantityStr = quaninfo.getText().toString().trim();
+        String editedCostStr = costinfo.getText().toString().trim();
+        String editedPriceStr = priceinfo.getText().toString().trim();
 
-        // Find the corresponding Product object in the productList using a for loop
-        for (int i = 0; i < AddItemViews.productList.size(); i++) {
-            ProductList product = AddItemViews.productList.get(i);
+        // Validate fields
+        if (validateFields(editedProductName, editedQuantityStr, editedCostStr, editedPriceStr)) {
+            int editedQuantity = Integer.parseInt(editedQuantityStr);
+            int editedCost = Integer.parseInt(editedCostStr);
+            int editedPrice = Integer.parseInt(editedPriceStr);
 
-            if(product.getPname().equals(originalProductName)){
+            // Find the corresponding Product object in the productList using a for loop
+            for (int i = 0; i < AddItemViews.productList.size(); i++) {
+                ProductList product = AddItemViews.productList.get(i);
 
-                // Update the values
-                product.setPname(editedProductName);
-                product.setQuantity(editedQuantity);
-                product.setCost(editedCost);
-                product.setPrice(editedPrice);
+                if (product.getPname().equals(originalProductName)) {
+                    // Update the values
+                    product.setPname(editedProductName);
+                    product.setQuantity(editedQuantity);
+                    product.setCost(editedCost);
+                    product.setPrice(editedPrice);
 
-                break;
+                    break;
+                }
             }
 
+            ProductListViews.adapter.notifyDataSetChanged();
+            finish();
+        } else {
+            // Show a message if validation fails
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
         }
-        ProductListViews.adapter.notifyDataSetChanged();
-        finish();
-
+    }
+    private boolean validateFields(String editedProductName, String editedQuantityStr, String editedCostStr, String editedPriceStr) {
+        // Check if any of the fields is empty
+        return !editedProductName.isEmpty() &&
+                !editedQuantityStr.isEmpty() &&
+                !editedCostStr.isEmpty() &&
+                !editedPriceStr.isEmpty();
     }
     private void deleteProduct(String productNameToDelete){
 
         for (int i = 0; i < AddItemViews.productList.size(); i++) {
             ProductList product = AddItemViews.productList.get(i);
 
-            if(product.getPname().equals(productNameToDelete));{
+            if(product.getPname().equals(productNameToDelete)){
 
                 AddItemViews.productList.remove(i);
 
                 ProductListViews.adapter.notifyDataSetChanged();
                 finish();
                 return;
-
             }
-
-
         }
-
-
     }
 
     private void showEditDialog() {
@@ -174,6 +183,13 @@ public class ProductInfoViews extends AppCompatActivity {
 
         }
         alertDialog.show();
+    }
+    private boolean validateFields() {
+        // Check if any of the fields is empty
+        return !prodinfo.getText().toString().trim().isEmpty() &&
+                !quaninfo.getText().toString().trim().isEmpty() &&
+                !costinfo.getText().toString().trim().isEmpty() &&
+                !priceinfo.getText().toString().trim().isEmpty();
     }
 
 
