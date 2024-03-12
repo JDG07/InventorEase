@@ -4,73 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/statisticsbg"
     tools:context=".StatisticsView">
 
     <TextView
         android:id="@+id/inventoryValueTextView"
-        android:layout_width="214dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="74dp"
-        android:layout_marginEnd="279dp"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/inventoryCostTextView"
+        android:layout_width="228dp"
+        android:layout_height="71dp"
+        android:background="@drawable/actvsalesentrylayout"
+        android:fontFamily="@font/anton"
+        android:gravity="center"
+        android:text="Inventory Value"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396" />
 
     <TextView
         android:id="@+id/productCountTextView"
-        android:layout_width="219dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="280dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/inventoryValueTextView"
+        android:layout_width="228dp"
+        android:layout_height="71dp"
+        android:background="@drawable/actvsalesentrylayout"
+        android:fontFamily="@font/anton"
+        android:gravity="center"
+        android:text="PRODUCT COUNT"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/inventoryCostTextView"
-        android:layout_width="216dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="77dp"
-        android:layout_marginEnd="276dp"
-        android:layout_marginBottom="372dp"
-        android:text="TextView"
+        android:layout_width="228dp"
+        android:layout_height="71dp"
+        android:background="@drawable/actvsalesentrylayout"
+        android:fontFamily="@font/anton"
+        android:gravity="center"
+        android:text="Inventory Cost"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547" />
 
     <Button
         android:id="@+id/backbtn"
-        android:layout_width="100dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="165dp"
-        android:layout_marginBottom="128dp"
-        android:text="Back"
+        android:layout_width="56dp"
+        android:layout_height="62dp"
+        android:background="@drawable/backarrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
 
     <Button
         android:id="@+id/showgraphBTN"
         android:layout_width="144dp"
         android:layout_height="63dp"
-        android:layout_marginTop="80dp"
         android:text="Show Graph"
-        app:layout_constraintBottom_toTopOf="@+id/backbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inventoryCostTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

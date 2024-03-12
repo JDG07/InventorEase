@@ -5,95 +5,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/EditAD"
     android:layout_width="300dp"
-    android:layout_height="wrap_content">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:id="@+id/Editlayout"
-    android:background="@drawable/splashscreen"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent">
+    >
 
-    <TextView
-        android:id="@+id/EditTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:fontFamily="@font/archivo_black"
-        android:gravity="center_horizontal"
-        android:paddingTop="26dp"
-        android:text="EDIT PRODUCT"
-        android:textColor="#7743DB"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/Editlayout" />
-
-    <TextView
-        android:id="@+id/EditDescr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/bebas_neue"
-        android:gravity="center_horizontal"
-        android:text="Are you sure you want to edit this product?"
-        android:textSize="23dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/EditYes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EditTitle" />
-
-    <Button
-        android:id="@+id/EditYes"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/ripple_effect"
-        android:backgroundTint="#7743DB"
-        android:text="Yes"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:cornerRadius="12dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Editlayout"
+        android:layout_width="300dp"
+        android:layout_height="166dp"
+        android:background="@drawable/splashscreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EditDescr" />
+        tools:layout_editor_absoluteY="0dp">
 
-    <Button
-        android:id="@+id/EditNo"
-        android:layout_width="91dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/ripple_effect"
-        android:backgroundTint="#7743DB"
-        android:text="No"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EditDescr" />
+        <TextView
+            android:id="@+id/EditTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/actvsalesentrylayout"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="Edit Product"
+            android:textColor="#7743DB"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/Editlayout" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/EditDescr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center_horizontal"
+            android:text="Are you sure you want to edit this product?"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/editimage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:src="@drawable/alertdialog"
-        app:layout_constraintBottom_toTopOf="@id/Editlayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Editlayout"
-         />
+        <Button
+            android:id="@+id/EditNo"
+            android:layout_width="91dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/ripple_effect"
+            android:backgroundTint="#7743DB"
+            android:text="No"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.779"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EditTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/EditYes"
+            android:layout_width="91dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/ripple_effect"
+            android:backgroundTint="#7743DB"
+            android:text="Yes"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
