@@ -297,52 +297,53 @@ ConstraintLayout SLL;
 
             });
     }
-    public void addSales(){
-        String prodsales = productsalesET.getText().toString();
-        String quansales = quantitysoldET.getText().toString();
-        String pricesales = pricesoldET.getText().toString();
-        String totsales = totalsoldET.getText().toString();
+    public void addSales() {
+        String prodsales = productsalesET.getText().toString().trim();
+        String quansales = quantitysoldET.getText().toString().trim();
+        String pricesales = pricesoldET.getText().toString().trim();
+        String totsales = totalsoldET.getText().toString().trim();
 
-        String selectedProductName = autoCompleteTextView.getText().toString();
-        int selectedPosition = searchproduct.indexOf(selectedProductName);
+        String selectedProductName = autoCompleteTextView.getText().toString().trim();
 
-        if (selectedPosition >= 0 && selectedPosition < products.size()) {
-            ProductList selectedProduct = products.get(selectedPosition);
-            int remainingStock = selectedProduct.getQuantity();
-            int quantitySold = Integer.parseInt(quansales);
+        if (validateFields(prodsales, quansales, pricesales, totsales, selectedProductName)) {
+            int selectedPosition = searchproduct.indexOf(selectedProductName);
 
-            if (quantitySold > remainingStock) {
-                showAlertDialog("Quantity exceeds remaining stock", "Please enter a valid quantity.");
-                quantitysoldET.setText("");
-                return;
+            if (selectedPosition >= 0 && selectedPosition < products.size()) {
+                ProductList selectedProduct = products.get(selectedPosition);
+                int remainingStock = selectedProduct.getQuantity();
+                int quantitySold = Integer.parseInt(quansales);
+
+                if (quantitySold > remainingStock) {
+                    showAlertDialog("Quantity exceeds remaining stock", "Please enter a valid quantity.");
+                    quantitysoldET.setText("");
+                    return;
+                }
+
+                selectedProduct.setQuantity(remainingStock - quantitySold);
+            } else {
+                Log.e("Error", "Selected position is out of bounds");
             }
 
-            // Update the remaining stock in your ProductList
-            selectedProduct.setQuantity(remainingStock - quantitySold);
+            SalesArrayClass salesEntry = new SalesArrayClass(prodsales, quansales, pricesales, totsales);
+            salesarray.add(salesEntry);
+            updateTotalPrice();
+
+            productsalesET.getText().clear();
+            quantitysoldET.getText().clear();
+            pricesoldET.getText().clear();
+            totalsoldET.getText().clear();
+
+            CDSales.dismiss();
+            autoCompleteTextView.setText("");
+
+            Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
         } else {
-
-            Log.e("Error", "Selected position is out of bounds");
+            Toast.makeText(this, "Please fill in Quantity", Toast.LENGTH_SHORT).show();
         }
+    }
 
-
-
-        SalesArrayClass salesEntry = new SalesArrayClass(prodsales,quansales,pricesales,totsales);
-        salesarray.add(salesEntry);
-        updateTotalPrice();
-
-
-        productsalesET.getText().clear();
-        quantitysoldET.getText().clear();
-        pricesoldET.getText().clear();
-        totalsoldET.getText().clear();
-
-        CDSales.dismiss();
-        autoCompleteTextView.setText("");
-
-
-
-        Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
-
+    private boolean validateFields(String prodsales, String quansales, String pricesales, String totsales, String selectedProductName) {
+        return !prodsales.isEmpty() && !quansales.isEmpty() && !pricesales.isEmpty() && !totsales.isEmpty() && !selectedProductName.isEmpty();
     }
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
