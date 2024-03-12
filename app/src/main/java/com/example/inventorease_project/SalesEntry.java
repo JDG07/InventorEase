@@ -255,13 +255,7 @@ ConstraintLayout SLL;
                 checkoutbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        salesListAdapter.notifyDataSetChanged();
-                        createPDF();
-                        showReceipt ();
-                        setRandomNumber();
-                        setReceiptdismissbtn();
-                        updateTotalPriceViews();
-                  //      updateReceiptTotal();
+                        showCheckoutConfirmationDialog();
                         // clearSalesListView();
 
                     }
@@ -389,21 +383,6 @@ ConstraintLayout SLL;
         }
     }
 
-//    private void updateTotalPrice() {
-//        int sum = 0;
-//
-//        for (SalesArrayClass entry : salesarray) {
-//            try {
-//                int total = Integer.parseInt(entry.getSalestotal());
-//                sum += total;
-//            } catch (NumberFormatException e) {
-//
-//                Log.e("UpdateTotalPrice", "Invalid integer format in sales total: " + entry.getSalestotal());
-//            }
-//        }
-//
-//        totalpriceTV.setText(String.valueOf(sum));
-//    }
 private void setReceiptdismissbtn(){
 
     ImageButton dismiss = CDReceipt.findViewById(R.id.receiptdismissbtn);
@@ -538,7 +517,7 @@ private void showReceipt (){
         }
 
         if (totalreceiptTV != null) {
-            totalreceiptTV.setText(sum);
+            totalreceiptTV.setText(String.valueOf(sum));
         }
     }
     private void updateTotalPrice() {
@@ -559,6 +538,28 @@ private void showReceipt (){
         }
 
         return sum;
+    }
+    private void showCheckoutConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Checkout Confirmation");
+        builder.setMessage("Are you sure you want to checkout?");
+
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            // User clicked Yes, proceed with checkout
+            salesListAdapter.notifyDataSetChanged();
+            createPDF();
+            showReceipt();
+            setRandomNumber();
+            setReceiptdismissbtn();
+            updateTotalPriceViews();
+            updateReceiptTotal();
+        });
+
+        builder.setNegativeButton("No", (dialog, which) -> {
+            // User clicked No, do nothing
+        });
+
+        builder.show();
     }
 
 }
