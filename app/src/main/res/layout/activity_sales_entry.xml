@@ -133,7 +133,7 @@
         android:background="@drawable/actvsalesentrylayout"
         android:fontFamily="@font/bebas_neue"
         android:gravity="center"
-        android:text="price"
+        android:text="0"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

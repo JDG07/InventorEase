@@ -29,7 +29,7 @@
             android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="175dp"
             android:fontFamily="@font/bebas_neue"
             android:gravity="left|center"
             android:text="RANDOM NUMBER"
@@ -92,8 +92,8 @@
 
         <ListView
             android:id="@+id/receiptLV"
-            android:layout_width="match_parent"
-            android:layout_height="337dp">
+            android:layout_width="411dp"
+            android:layout_height="426dp">
 
 
         </ListView>
