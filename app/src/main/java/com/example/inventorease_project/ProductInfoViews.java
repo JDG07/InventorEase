@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -49,6 +50,38 @@ public class ProductInfoViews extends AppCompatActivity {
         costinfo.setEnabled(false);
         priceinfo.setEnabled(false);
         /////////////////////////
+        EditText prodinfo = findViewById(R.id.prodinfoET);
+        final int maxCharactersProdInfo = 35;
+
+        InputFilter[] filtersProdInfo = new InputFilter[1];
+        filtersProdInfo[0] = new InputFilter.LengthFilter(maxCharactersProdInfo);
+
+        prodinfo.setFilters(filtersProdInfo);
+        //////////////////////////////////////
+        EditText quaninfo = findViewById(R.id.quaninfoET);
+        final int maxDigitsQuanInfo = 4;
+
+        InputFilter[] filtersQuanInfo = new InputFilter[1];
+        filtersQuanInfo[0] = new InputFilter.LengthFilter(maxDigitsQuanInfo);
+
+        quaninfo.setFilters(filtersQuanInfo);
+        /////////////////////////////////////
+        EditText costinfo = findViewById(R.id.costinfoET);
+        final int maxDigitsCostInfo = 6;
+
+        InputFilter[] filtersCostInfo = new InputFilter[1];
+        filtersCostInfo[0] = new InputFilter.LengthFilter(maxDigitsCostInfo);
+
+        costinfo.setFilters(filtersCostInfo);
+        /////////////////////////////////////
+        EditText priceinfo = findViewById(R.id.priceinfoET);
+        final int maxDigitsPriceInfo = 6; // Adjust the limit as needed
+
+        InputFilter[] filtersPriceInfo = new InputFilter[1];
+        filtersPriceInfo[0] = new InputFilter.LengthFilter(maxDigitsPriceInfo);
+
+        priceinfo.setFilters(filtersPriceInfo);
+        /////////////////////////////////////
 
         Intent intent = getIntent();
         String productName = intent.getStringExtra("pname");

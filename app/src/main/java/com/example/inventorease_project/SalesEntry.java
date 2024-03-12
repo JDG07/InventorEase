@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -79,7 +80,6 @@ ConstraintLayout SLL;
         CDSales = new Dialog(this);
         CDReceipt = new Dialog(this);
         salesListAdapter = new SalesListAdapter(this, R.layout.saleslistviewlayout, salesarray);
-
 
 
         Button backdash1 = findViewById(R.id.backdash1);
@@ -148,6 +148,14 @@ ConstraintLayout SLL;
                 totalsoldET = CDSales.findViewById(R.id.totalsoldET);
                 pricesoldET = CDSales.findViewById(R.id.pricesoldET);
                 remainingstockET = CDSales.findViewById(R.id.remainingquantityET);
+
+
+                final int maxDigitsQuantityDialog = 4;
+
+                InputFilter[] filtersPriceInfo = new InputFilter[1];
+                filtersPriceInfo[0] = new InputFilter.LengthFilter(maxDigitsQuantityDialog);
+                quantitysoldET.setFilters(filtersPriceInfo);
+
 
 
                 backsales= CDSales.findViewById(R.id.backsales);
